@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans', sans-serif;
+}
+body {
+    /* background-color: #dff1fa; */
+    background-color: #292e5a;
+    /* background-color: #383e6e; */
+}
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 980px;
+
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 1fr 14fr;
+    grid-gap: 10px;
+    
+    /* background-color: #fff; */
+}
+.container > div {
+    border-radius: 20px;
+}
+
+
+/* ----------------- Counter ----------------- */
+.counter {
+    grid-row: 1/36;
+    background-color: #383e6e; /* #11c0f7 */
+    overflow: hidden;
+}
+.counter nav {
+    height: 100%;
+}
+.counter ul {
+    height: inherit;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.counter li {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    list-style: none;
+}
+.counter li:hover {
+    background-color: #292e5a; /* #0487af */
+}
+.counter li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ----------------- Nav button ----------------- */
+.nav-button {
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    grid-row: 1/10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: rgb(150, 99, 39); */
+}
+.nav-button span {
+    font-size: 62px;
+    font-weight: bold;
+    color: #fff;
+}
+.button {
+    padding: 10px 26px;
+    box-sizing: border-box;
+
+    border-radius: 10px;
+    border: none;
+
+    background-color: #383e6e;
+    color: #fff;
+}
+
+
+
+/* ----------------- Question ----------------- */
+.question {
+    padding: 20px;
+    box-sizing: border-box;
+
+    grid-row: 10/33;
+    background-color: #383e6e;
+}
+.question > div {
+    height: 100%;
+}
+.question > div > h3 {
+    text-align: center;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #a3a3a3;
+    color: #fff; /* #a3a3a3 */
+}
+.questions-group > label > span {
+    color: #fff;
+}
+
+
+
+/* ----------------- Progress line ----------------- */
+.progress-line {
+    grid-row: 33/36;
+    background-color: rgb(255, 255, 255);
+
+    border: 2px solid #383e6e;
+
+    overflow: hidden;
+}
+.progress-line > div {
+    width: 40%;
+    height: 100%;
+    background-color: #32d174;
+}
+
+.questions-group {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+header {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    width: 100%;
+    max-width: 980px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    background-color: #3e9fff;
+}
+header h1{
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.container > h3 {
+    text-align: center;
+    color: #4979b5;
+}
+.discription {
+    color: #4979b5;
+    text-align: center;
+}
