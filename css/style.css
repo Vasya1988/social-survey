@@ -80,7 +80,8 @@ body {
     color: #4b5c6e;
 }
 .button {
-    padding: 10px 26px;
+    margin-left: 20px;
+    padding: 10px 40px;
     box-sizing: border-box;
 
     border-radius: 10px;
@@ -141,7 +142,7 @@ body {
 header {
     margin: 0 auto;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 
     width: 100%;
