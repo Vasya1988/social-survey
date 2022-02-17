@@ -28,6 +28,46 @@ body {
 }
 
 
+
+/* ----------------- Start ----------------- */
+.start {
+    grid-column: 1/4;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.discription {
+    width: 60%;
+    color: #4979b5;
+    text-align: center;
+}
+.discription > span {
+    font-size: x-large;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.start-button {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
+.start-button .button-start {
+    background-color: yellowgreen;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+.start-button a {
+    font-size: small;
+}
+
+
+
+
 /* ----------------- Counter ----------------- */
 .counter {
     grid-row: 1/36;
@@ -97,6 +137,9 @@ body {
 
     background-color: #4b5c6e;
     color: #faf9fe;
+}
+.button:active {
+    background-color: #fff;
 }
 
 
@@ -173,25 +216,26 @@ header h1{
     text-align: center;
     color: #4979b5;
 }
-.discription {
-    color: #4979b5;
-    text-align: center;
-}
+
 
 
 /* ----------------- Question 3 ----------------- */
-.q3 {
+.q3, .q4 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }    
-.gender {
+.gender, .ages {
     margin-top: 16px;
     margin-right: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+.ages {
+    margin-top: 31px;
+    justify-content: space-around;
 }
 .gender > span {
     margin-bottom: 2px;
@@ -199,7 +243,7 @@ header h1{
 .gender > span:last-child {
     margin-bottom: 4px;
 }
-.age {
+.age, .size {
     margin-top: 16px;
     margin-right: 10px;
     height: 100%;
@@ -216,6 +260,10 @@ header h1{
 .age label, span {
     margin-top: 4px;
 }
+
+
+
+/* ----------------- Custom checkbox ----------------- */
 .checkbox-origin {
     display: none;
 }
@@ -247,15 +295,15 @@ header h1{
 
 
 
-
-
-
-
+/* ----------------- Mobile menu ----------------- */
 
 @media (max-width: 571px) {
     header {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
+    }
+    header h1 {
+        font-size: x-large;
     }
     .button {
         /* height: 12vw; */
@@ -274,5 +322,12 @@ header h1{
     }
     .container .progress-line {
         border-radius: 12px;
+    }
+    .size {
+        margin-right: 18px;
+    }
+    .ages {
+        margin-top: 32px;
+        justify-content: space-around
     }
 }
