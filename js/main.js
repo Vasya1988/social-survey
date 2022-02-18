@@ -1,6 +1,10 @@
+import startPage from './startPage.js';
+import q2 from './questions/q2.js';
+import q3 from './questions/q3.js';
+import q4 from './questions/q4.js';
 
 
-const markupCounter = `
+export const markupCounter = `
 <div class="counter">
     <nav>
         <ul>
@@ -19,7 +23,7 @@ const markupCounter = `
 </div>
 `;
 
-const markupNavButton = `
+export const markupNavButton = `
 <div class='nav-button'>
     <span>67%</span>
     <div class="buttons">
@@ -29,67 +33,66 @@ const markupNavButton = `
 </div>
 `;
 
-const markupProgressLine = `
+export const markupProgressLine = `
 <div class='progress-line'>
     <div></div>
 </div>
 `;
 
-const markupStart = `
-    <div class="start">
-        <p
-            class='discription'
-        >
-            <span>Здравствуйте!</span>
-            <br>
-            Мы производители российской обуви для детей.
-            Производим обувь по стандартам, созданным еще в 1975 году.
-            Данный опрос поможет нам внести корректные изменения в размерную сетку(авынаверняка     сталкивались с несоответствием
-            размеров и длины стопы),
-            Просим ответить вас на несколько вопросов:
-            
-            Заранее благодарны за сотрудничество!
-        </p>
-        <div class="start-button">
-            <button id="button-start" class='button button-start'>Пройти опрос</button>
-            <a href="#" >Закрыть страницу</a>
-        </div>
-    </div>
-`;
 
-const elements = {
-    container: document.getElementById('app'),
+
+export const elements = {
+    app: document.getElementById('app'),
     buttonStart: document.getElementById('button-start')
 }
-let myPath;
+
+
+export const routes = [
+    {page: 'startPage', component: startPage},
+    {page: 'q2', component: q2},
+    {page: 'q3', component: q3},
+    {page: 'q4', component: q4}
+
+];
 
 // ----------------------- Рендерим разметку
 
-export const pageRender = (markup) => {
+export function render (markup) {
     return new Promise ((resolve, reject) => {
-        
-        setTimeout(()=>{
-            elements.container.insertAdjacentHTML("beforeend", markup);
-            resolve();
-            
-        }, 500)
+        const pathArray = location.hash.split('/')[1];
+        let delPage = document.getElementById('app');
+
+        if (location.hash.split('/')[0]==='') {
+
+            delPage.innerHTML='';
+            routes[0].component()
+        } else {
+
+            routes.find((e) => {
+
+                if (e.page === pathArray) {
+                    delPage.innerHTML='';
+                    return e.component()
+                }
+            })
+        }
+        resolve();
     })
 };
+
 
 // ----------------------- Функция для тестов
 
 function test(path) {
     return new Promise((resolve, reject) => {
 
-        setTimeout(()=>{console.log('Render work --> ', path)}, 300)
+
     })
 }
 
-async function render(element, path) {
-
-    await pageRender(element);
-    await test(path)
-
+const renderStart = async () => {
+    await render();
 }
 
-window.addEventListener('load', render(markupStart ,elements.buttonStart))
+window.addEventListener('hashchange', renderStart);
+window.addEventListener('load', renderStart);
