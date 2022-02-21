@@ -2,6 +2,8 @@ import startPage from './startPage.js';
 import q2 from './questions/q2.js';
 import q3 from './questions/q3.js';
 import q4 from './questions/q4.js';
+import q5 from './questions/q5.js';
+import q6 from './questions/q6.js';
 
 
 export const markupCounter = `
@@ -51,7 +53,9 @@ export const routes = [
     {page: 'startPage', component: startPage},
     {page: 'q2', component: q2},
     {page: 'q3', component: q3},
-    {page: 'q4', component: q4}
+    {page: 'q4', component: q4},
+    {page: 'q5', component: q5},
+    {page: 'q6', component: q6}
 
 ];
 

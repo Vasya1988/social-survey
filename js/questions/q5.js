@@ -1,5 +1,5 @@
-const q4 = () => {
-    const markupQ4 = `
+const q5 = () => {
+    const markupQ5 = `
 
         <div class="counter">
             <nav>
@@ -21,171 +21,171 @@ const q4 = () => {
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
-                <a href='#/q3' type="button" class='button' >Назад</a>
-                <a href='#/q5' type="button" class='button' >Вперед</a>
+                <a href='#/q4' type="button" class='button' >Назад</a>
+                <a href='#/q6' type="button" class='button' >Вперед</a>
             </div>
         </div>
 
         <div class="question-4">
-        <h3>Обувь какого размера вы покупаете ребенку в данный момент?  <br/>(для детей от 0 до 5 лет включительно)</h3>
-        <div class="questions-group q4">
+        <h3>Обувь какого размера вы покупаете ребенку в данный момент?  <br/>(для детей от 6 до 11 лет включительно)</h3>
+        <div class="questions-group q5">
             <div class="ages">
-                <span>0-1 год</span>
-                <span>2-3 года</span>
-                <span>4-5 лет</span>
-            </div>
-            <div class="size">
-                <span>20</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>21</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>22</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>23</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>24</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>25</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>26</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>27</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>28</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="size">
-                <span>29</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
+                <span>6-7 год</span>
+                <span>8-9 года</span>
+                <span>10-11 лет</span>
             </div>
             <div class="size">
                 <span>30</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>31</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>32</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>33</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>34</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>35</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>36</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>37</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>38</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>39</span>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+                <label class="label">
+                    <input type="checkbox" class="checkbox-origin">
+                    <span class="checkbox-fake"></span>
+                </label>
+            </div>
+            <div class="size">
+                <span>40</span>
                 <label class="label">
                     <input type="checkbox" class="checkbox-origin">
                     <span class="checkbox-fake"></span>
@@ -209,11 +209,11 @@ const q4 = () => {
     `;
 
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQ4)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQ5)
     }
 
     return renderPage();
     
 }
 
-export default q4;
+export default q5;

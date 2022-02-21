@@ -75,7 +75,7 @@ body {
 
 /* ----------------- Counter ----------------- */
 .counter {
-    grid-row: 1/36;
+    grid-row: 1/24;
     background-color: #4b5c6e; /* #11c0f7 */
     overflow: hidden;
 }
@@ -178,12 +178,19 @@ body {
 .questions-group > label > span {
     color: #4b5c6e;
 }
+.optionOfAnswer {
+    margin-left: 10px;
+}
+.label {
+    display: flex;
+    justify-content: flex-start;
+}
 
 
 
 /* ----------------- Progress line ----------------- */
 .progress-line {
-    grid-row: 33/36;
+    grid-row: 22/24;
     background-color: rgb(255, 255, 255);
 
     /* border: 1px solid #4b5c6e; */
@@ -234,7 +241,7 @@ header h1{
 
 
 /* ----------------- Question 3 ----------------- */
-.q3, .q4 {
+.q3, .q4, .q5 {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -259,7 +266,7 @@ header h1{
 }
 .age, .size {
     margin-top: 16px;
-    margin-right: 10px;
+    margin-right: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -305,6 +312,15 @@ header h1{
 .checkbox-origin:checked + .checkbox-fake::before {
     opacity: 1;
 }
+.enterYourAnswer {
+    border: none;
+    border-bottom: 1px solid grey;
+    background-color: #f2f3f7;
+    height: 20px;
+}
+.enterYourAnswer:focus-visible {
+    outline: none;
+}
 
 
 
@@ -343,5 +359,11 @@ header h1{
     .ages {
         margin-top: 32px;
         justify-content: space-around
+    }
+    .counter {
+        grid-row: 1/14;
+    }
+    .progress-line {
+        grid-row: 12/14;
     }
 }
