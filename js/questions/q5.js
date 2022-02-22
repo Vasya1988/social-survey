@@ -26,7 +26,7 @@ const q5 = () => {
             </div>
         </div>
 
-        <div class="question-4">
+        <div class="question-5">
         <h3>Обувь какого размера вы покупаете ребенку в данный момент?  <br/>(для детей от 6 до 11 лет включительно)</h3>
         <div class="questions-group q5">
             <div class="ages">
