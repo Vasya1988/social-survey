@@ -20,6 +20,7 @@ const startPage = () => {
             <div class="start-button">
                 <a href='#/q1' id="button-start" class='button button-start'>Пройти опрос</a>
             </div>
+
         </div>
     `;
 

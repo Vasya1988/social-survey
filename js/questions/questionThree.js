@@ -29,104 +29,91 @@ const questionThree = () => {
         </div>
 
         <div class="question-3">
-        <h3>Укажите, пожалуйста, пол и возраст детей</h3>
-        <div class="questions-group q3">
-            <div class="gender">
-                <span>Мальчики</span>
-                <span>Девочки</span>
-            </div>
-            <div class="age">
-                <span>0-1 год</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="age">
-                <span>2-3 года</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="age">
-                <span>4-5 лет</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="age">
-                <span>6-7 лет</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="age">
-                <span>8-9 лет</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="age">
-                <span>10-11 лет</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
-            <div class="age">
-                <span>12+</span>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-                <label class="label">
-                    <input type="checkbox" class="checkbox-origin">
-                    <span class="checkbox-fake"></span>
-                </label>
-            </div>
+            <h3>Дети</h3>
+
             
-        </div>
+
+            <button type='button' data-create='child' class='button add-child' >Добавить + </button>
+
         </div>
 
         <div class='progress-line'>
             <div></div>
         </div>
     `;
+    const markupCreateChild = `
+    <div class='create-frame-background' >
+        <div class='create-frame' >
+            <div class='options'>
+                <div class='create-gender'>
+                    <span>Выберите пол ребенка</span>
+                    <select>
+                        <option value='gender' >Выберите...</option>
+                        <option value='female' >Девочка</option>
+                        <option value='male' >Мальчик</option>
+                    </select>
+                </div>
+                <div class='create-age' >
+                    <span>Укажите возраст ребенка</span>
+                    <select>
+                        <option value='0' >0</option>
+                        <option value='1' >1</option>
+                        <option value='2' >2</option>
+                        <option value='3' >3</option>
+                        <option value='4' >4</option>
+                        <option value='5' >5</option>
+                        <option value='6' >6</option>
+                        <option value='7' >7</option>
+                        <option value='8' >8</option>
+                        <option value='9' >9</option>
+                        <option value='10' >10</option>
+                        <option value='11' >11</option>
+                        <option value='12+' >12+</option>
+                    </select>
+                </div>
+            </div>
+            <button class='button-close' data-button='close' >close</button>
+        </div>
+    </div> 
+    `;
 
+ 
+
+    // Рендерим страницу
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree)
     }
 
+    // Добавить ребенка
+    const addChild = () => {
 
-    return renderPage();
+        const addButton = document.querySelector('[data-create="child"]');
+
+        addButton.addEventListener('click', (event) => {
+            document.getElementById('app').parentNode.insertAdjacentHTML('afterbegin', markupCreateChild)
+        })
+
+        console.log(addButton);
+    }
+
+
+    // Событие кнопки close
+    const closeCreateFrame = () => {
+        const buttonClose = document.querySelector('[data-button=close]');
+
+        buttonClose.addEventListener('click', (event) => {
+            console.log(event)
+            document.getElementById('app').removeChild(document.querySelector('.create=frame-background'))
+        })
+    }
+
+
+    async function startScript() {
+        await renderPage();
+        await addChild();
+        await closeCreateFrame();
+    }
+    return startScript();
     
 }
 
