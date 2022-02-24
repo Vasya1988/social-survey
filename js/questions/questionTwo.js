@@ -1,7 +1,7 @@
 import * as main from '../main.js';
 
-const q2 = () => {
-    const markupQ2 = 
+const questionTwo = () => {
+    const markupQuestionTwo = 
     `
     <div class="counter">
         <nav>
@@ -23,7 +23,7 @@ const q2 = () => {
     <div class='nav-button'>
         <span>67%</span>
         <div class="buttons">
-            <a href='#/startPage' type="button" class='button' >Назад</a>
+            <a href='#/q1' type="button" class='button' >Назад</a>
             <a href='#/q3' type="button" class='button' >Вперед</a>
         </div>
     </div>
@@ -58,10 +58,10 @@ const q2 = () => {
     `;
 
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQ2)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionTwo)
     };
 
 
     return renderPage();
 }
-export default q2;
+export default questionTwo;

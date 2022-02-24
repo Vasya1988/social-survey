@@ -1,9 +1,16 @@
 import startPage from './startPage.js';
-import q2 from './questions/q2.js';
-import q3 from './questions/q3.js';
-import q4 from './questions/q4.js';
-import q5 from './questions/q5.js';
-import q6 from './questions/q6.js';
+import questionOne from './questions/questionOne.js';
+import questionTwo from './questions/questionTwo.js';
+import questionThree from './questions/questionThree.js';
+import questionFour from './questions/questionFour.js';
+import questionFive from './questions/questionFive.js';
+import questionSix from './questions/questionSix.js';
+import questionSeven from './questions/questionSeven.js';
+import questionEight from './questions/questionEight.js';
+import questionNine from './questions/questionNine.js';
+import questionTen from './questions/questionTen.js';
+import questionEleven from './questions/questionEleven.js';
+import finishedPage from './finishedPage.js';
 
 
 export const markupCounter = `
@@ -51,11 +58,18 @@ export const elements = {
 
 export const routes = [
     {page: 'startPage', component: startPage},
-    {page: 'q2', component: q2},
-    {page: 'q3', component: q3},
-    {page: 'q4', component: q4},
-    {page: 'q5', component: q5},
-    {page: 'q6', component: q6}
+    {page: 'q1', component: questionOne},
+    {page: 'q2', component: questionTwo},
+    {page: 'q3', component: questionThree},
+    {page: 'q4', component: questionFour},
+    {page: 'q5', component: questionFive},
+    {page: 'q6', component: questionSix},
+    {page: 'q7', component: questionSeven},
+    {page: 'q8', component: questionEight},
+    {page: 'q9', component: questionNine},
+    {page: 'q10', component: questionTen},
+    {page: 'q10', component: questionEleven},
+    {page: 'finished', component: finishedPage}
 
 ];
 

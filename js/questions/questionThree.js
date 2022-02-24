@@ -1,7 +1,7 @@
 import * as main from '../main.js';
 
-const q3 = () => {
-    const markupQ3 = `
+const questionThree = () => {
+    const markupQuestionThree = `
 
         <div class="counter">
             <nav>
@@ -122,7 +122,7 @@ const q3 = () => {
     `;
 
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQ3)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree)
     }
 
 
@@ -130,4 +130,4 @@ const q3 = () => {
     
 }
 
-export default q3;
+export default questionThree;

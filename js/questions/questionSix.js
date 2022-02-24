@@ -1,8 +1,8 @@
 
 
-const q6 = () => {
+const questionSix = () => {
 
-    const markupQ6 = `
+    const markupQuestionSix = `
     <div class="counter">
         <nav>
             <ul>
@@ -40,11 +40,11 @@ const q6 = () => {
     `
 
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQ6)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSix)
     };
 
 
     return renderPage();
 }
 
-export default q6;
+export default questionSix;

@@ -18,14 +18,14 @@ const startPage = () => {
                 Заранее благодарны за сотрудничество!
             </p>
             <div class="start-button">
-                <a href='#/q2' id="button-start" class='button button-start'>Пройти опрос</a>
-                <a href="#" >Закрыть страницу</a>
+                <a href='#/q1' id="button-start" class='button button-start'>Пройти опрос</a>
             </div>
         </div>
     `;
 
+
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupStart)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupStart);
     }
 
     return renderPage();
