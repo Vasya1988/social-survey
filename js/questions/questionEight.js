@@ -1,5 +1,6 @@
 const questionEight = () => {
     const markupQuestionEight = `
+
         <div class="counter">
             <nav>
                 <ul>
@@ -25,19 +26,37 @@ const questionEight = () => {
             </div>
         </div>
 
-        <div class="question-6">
-            <h3>Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм</h3>
-            <p>
-            Для этого поставьте ребенка на чистый лист бумаги так, чтобы опора была сразу на обе стопы, обведите ступню по периметру карандашом/ручкой, измерьте линейкой расстояние от наиболее выпуклой точки пятки до большого пальца ноги.
-            </p>
-            <input placeholder='Ваш ответ' class='enterYourAnswer' type=text />
+        <div class="question-8">
+        <h3>Сталкиваетесь ли вы при выборе детской обуви со следующими проблемами?</h3>
+        <div class="questions-group ">
+            <label class="label">
+                <input type="checkbox" class="checkbox-origin">
+                <span class="checkbox-fake"></span>
+                <span class="optionOfAnswer">Обувь слишком узкая</span>
+            </label>
+            <label class="label">
+                <input type="checkbox" class="checkbox-origin">
+                <span class="checkbox-fake"></span>
+                <span class="optionOfAnswer">Обувь слишком широкая</span>
+            </label>
+            <label class="label">
+                <input type="checkbox" class="checkbox-origin">
+                <span class="checkbox-fake"></span>
+                <span class="optionOfAnswer">Нет проблем</span>
+            </label>
+            <label class="label">
+                <input type="checkbox" class="checkbox-origin">
+                <span class="checkbox-fake"></span>
+                <span class="optionOfAnswer">Другое: </span>
+                <input class='enterYourAnswer otherAnswer' type=text />
+            </label>
         </div>
+    </div>
 
-
-        <div class='progress-line'>
-            <div></div>
-        </div>
-        `;
+    <div class='progress-line'>
+        <div></div>
+    </div>
+    `;
 
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionEight)

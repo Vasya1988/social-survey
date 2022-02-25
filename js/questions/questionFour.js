@@ -22,12 +22,12 @@ const questionFour = () => {
             <span>67%</span>
             <div class="buttons">
                 <a href='#/q3' type="button" class='button' >Назад</a>
-                <a href='#/q5' type="button" class='button' >Вперед</a>
+                <a href='#/q6' type="button" class='button' >Вперед</a>
             </div>
         </div>
 
         <div class="question-4">
-        <h3>Обувь какого размера вы покупаете ребенку в данный момент?  <br/>(для детей от 0 до 5 лет включительно)</h3>
+        <h3>Обувь какого размера вы покупаете ребенку в данный момент?</h3>
         
 
         <div class="child-card">
@@ -60,6 +60,12 @@ const questionFour = () => {
                             <option value='38' >38</option>
                             <option value='39' >39</option>
                             <option value='40' >40</option>
+                            <option value='41' >41</option>
+                            <option value='42' >42</option>
+                            <option value='43' >43</option>
+                            <option value='44' >44</option>
+                            <option value='45' >45</option>
+                            <option value='46' >46</option>
                         </select>
                     </div>
                 </div>
@@ -94,6 +100,12 @@ const questionFour = () => {
                             <option value='38' >38</option>
                             <option value='39' >39</option>
                             <option value='40' >40</option>
+                            <option value='41' >41</option>
+                            <option value='42' >42</option>
+                            <option value='43' >43</option>
+                            <option value='44' >44</option>
+                            <option value='45' >45</option>
+                            <option value='46' >46</option>
                         </select>
                     </div>
                 </div>

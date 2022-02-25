@@ -1,6 +1,5 @@
 const questionSeven = () => {
     const markupQuestionSeven = `
-
         <div class="counter">
             <nav>
                 <ul>
@@ -27,42 +26,39 @@ const questionSeven = () => {
         </div>
 
         <div class="question-7">
-        <h3>Знаете ли Вы как правильно измерять длину стопы ребенка?</h3>
-        <div class="questions-group ">
-            <label class="label">
-                <input type="checkbox" class="checkbox-origin">
-                <span class="checkbox-fake"></span>
-                <span class="optionOfAnswer">Да, периодичечски проверяю</span>
-            </label>
-            <label class="label">
-                <input type="checkbox" class="checkbox-origin">
-                <span class="checkbox-fake"></span>
-                <span class="optionOfAnswer">Да, но не измеряю</span>
-            </label>
-            <label class="label">
-                <input type="checkbox" class="checkbox-origin">
-                <span class="checkbox-fake"></span>
-                <span class="optionOfAnswer">Не знаю</span>
-            </label>
-            <label class="label">
-                <input type="checkbox" class="checkbox-origin">
-                <span class="checkbox-fake"></span>
-                <span class="optionOfAnswer">Другое: </span>
-                <input class='enterYourAnswer otherAnswer' type=text />
-            </label>
-        </div>
-    </div>
+            <h3>Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм</h3>
+            <p>
+            Для этого поставьте ребенка на чистый лист бумаги так, чтобы опора была сразу на обе стопы, обведите ступню по периметру карандашом/ручкой, измерьте линейкой расстояние от наиболее выпуклой точки пятки до большого пальца ноги.
+            </p>
 
-    <div class='progress-line'>
-        <div></div>
-    </div>
-    `;
+
+            <div class="child-card">
+            <img class='image-child' src='./img/child-card/female.png' />
+                <div class='child-info' >
+                    <span class='title-gender'>Девочка</span>
+                    <span class='title-age'>2 года</span>
+                    <span>Размер: 25 </span>
+                    <div class='foot-size' >
+                        <span>Длина стопы:&nbsp  </span>
+                        <input class='' placeholder="Напишите..." type=text />
+                    </div>
+                    
+                </div>
+        </div>
+            
+        </div>
+
+
+        <div class='progress-line'>
+            <div></div>
+        </div>
+        `;
 
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSeven)
-    };
-
+    }
 
     return renderPage();
 }
+
 export default questionSeven;

@@ -283,7 +283,7 @@ body {
     margin-top: 10px;
     margin-right: 8px;
 
-    max-width: 248px;
+    max-width: 280px;
     width: 100%;
 
     display: flex;
@@ -325,6 +325,23 @@ body {
 }
 .title-age {
 
+}
+
+.foot-size {
+    display: flex;
+    flex-direction: column;
+}
+.foot-size > input {
+    width: 90px;
+    height: 20px;
+
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid;
+    background-color: #00000000;
+}
+.foot-size > input:focus-visible {
+    outline: none;
 }
 
 

@@ -3,12 +3,10 @@ import questionOne from './questions/questionOne.js';
 import questionTwo from './questions/questionTwo.js';
 import questionThree from './questions/questionThree.js';
 import questionFour from './questions/questionFour.js';
-import questionFive from './questions/questionFive.js';
 import questionSix from './questions/questionSix.js';
 import questionSeven from './questions/questionSeven.js';
 import questionEight from './questions/questionEight.js';
 import questionNine from './questions/questionNine.js';
-import questionTen from './questions/questionTen.js';
 import questionEleven from './questions/questionEleven.js';
 import finishedPage from './finishedPage.js';
 
@@ -62,12 +60,10 @@ export const routes = [
     {page: 'q2', component: questionTwo},
     {page: 'q3', component: questionThree},
     {page: 'q4', component: questionFour},
-    {page: 'q5', component: questionFive},
     {page: 'q6', component: questionSix},
     {page: 'q7', component: questionSeven},
     {page: 'q8', component: questionEight},
     {page: 'q9', component: questionNine},
-    {page: 'q10', component: questionTen},
     {page: 'q10', component: questionEleven},
     {page: 'finished', component: finishedPage}
 
