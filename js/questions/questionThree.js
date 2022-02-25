@@ -29,12 +29,9 @@ const questionThree = () => {
         </div>
 
         <div class="question-3">
-            <h3>Дети</h3>
-
-            
-
+            <h2>Дети</h2>
             <button type='button' data-create='child' class='button add-child' >Добавить + </button>
-
+            <div class='child-container' ></div>
         </div>
 
         <div class='progress-line'>
@@ -45,73 +42,106 @@ const questionThree = () => {
     <div class='create-frame-background' >
         <div class='create-frame' >
             <div class='options'>
-                <div class='create-gender'>
-                    <span>Выберите пол ребенка</span>
-                    <select>
-                        <option value='gender' >Выберите...</option>
-                        <option value='female' >Девочка</option>
-                        <option value='male' >Мальчик</option>
-                    </select>
+                <div>
+                    <div class='create-gender'>
+                        <span>Выберите пол ребенка</span>
+                        <select class='gender-item' >
+                            <option value='gender' >Выберите...</option>
+                            <option value='female' >Девочка</option>
+                            <option value='male' >Мальчик</option>
+                        </select>
+                    </div>
+                    <div class='create-age' >
+                        <span>Укажите возраст ребенка</span>
+                        <select class='age-item' >
+                            <option value='0' >0</option>
+                            <option value='1' >1</option>
+                            <option value='2' >2</option>
+                            <option value='3' >3</option>
+                            <option value='4' >4</option>
+                            <option value='5' >5</option>
+                            <option value='6' >6</option>
+                            <option value='7' >7</option>
+                            <option value='8' >8</option>
+                            <option value='9' >9</option>
+                            <option value='10' >10</option>
+                            <option value='11' >11</option>
+                            <option value='12+' >12+</option>
+                        </select>
+                    </div>
                 </div>
-                <div class='create-age' >
-                    <span>Укажите возраст ребенка</span>
-                    <select>
-                        <option value='0' >0</option>
-                        <option value='1' >1</option>
-                        <option value='2' >2</option>
-                        <option value='3' >3</option>
-                        <option value='4' >4</option>
-                        <option value='5' >5</option>
-                        <option value='6' >6</option>
-                        <option value='7' >7</option>
-                        <option value='8' >8</option>
-                        <option value='9' >9</option>
-                        <option value='10' >10</option>
-                        <option value='11' >11</option>
-                        <option value='12+' >12+</option>
-                    </select>
-                </div>
+                <button class='button button-add' data-button='add' >Добавить</button>
             </div>
-            <button class='button-close' data-button='close' >close</button>
+            <button class='button-close' data-button='close' >X</button>
         </div>
     </div> 
     `;
+    const markupChildCard = `
+    <div class="child-card">
+    <img class='image-child' src='../img/child-card/male.png' />
+        <div class='child-info' >
+            <span class='title-gender'>Мальчик</span>
+            <span class='title-age'>4 года</span>
+        </div>
+</div>
+    `
 
  
 
     // Рендерим страницу
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree);
+        
     }
 
     // Добавить ребенка
     const addChild = () => {
 
         const addButton = document.querySelector('[data-create="child"]');
-
+        
         addButton.addEventListener('click', (event) => {
-            document.getElementById('app').parentNode.insertAdjacentHTML('afterbegin', markupCreateChild)
-        })
 
-        console.log(addButton);
+            const appElement = document.getElementById('app');
+            appElement.parentNode.insertAdjacentHTML('afterbegin', markupCreateChild);
+
+            const buttons = document.querySelectorAll('[data-button]');
+
+            buttons.forEach((btn) => {
+
+                btn.addEventListener('click', (buttonItem) => {
+
+                    if (buttonItem.target.dataset.button === 'add') {
+
+                        createChildCard();
+                        closeCreateFrame();
+                        console.log('This - add')
+                    } else if (buttonItem.target.dataset.button === 'close') {
+
+                        console.log('This - close', buttonItem.target);
+                        closeCreateFrame();
+                    }
+                })
+            })
+            
+        })
+    }
+
+    // Создать карточку ребенка
+    const createChildCard = () => {
+        document.querySelector('.child-container').insertAdjacentHTML('afterbegin', markupChildCard)
     }
 
 
     // Событие кнопки close
-    const closeCreateFrame = () => {
-        const buttonClose = document.querySelector('[data-button=close]');
+    const closeCreateFrame = (props) => {
+        document.body.children[0].remove()
 
-        buttonClose.addEventListener('click', (event) => {
-            console.log(event)
-            document.getElementById('app').removeChild(document.querySelector('.create=frame-background'))
-        })
     }
 
 
     async function startScript() {
         await renderPage();
         await addChild();
-        await closeCreateFrame();
     }
     return startScript();
     
