@@ -78,7 +78,7 @@ const questionThree = () => {
     `;
     const markupChildCard = `
     <div class="child-card">
-    <img class='image-child' src='../img/child-card/male.png' />
+    <img class='image-child' src='./img/child-card/male.png' />
         <div class='child-info' >
             <span class='title-gender'>Мальчик</span>
             <span class='title-age'>4 года</span>
