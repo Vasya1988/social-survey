@@ -1,6 +1,12 @@
 import * as main from '../main.js';
 
 const questionThree = () => {
+    const currentCard = {
+        currentGender: null,
+        currentAge: null
+    }
+
+
     const markupQuestionThree = `
 
         <div class="counter">
@@ -45,7 +51,7 @@ const questionThree = () => {
                 <div>
                     <div class='create-gender'>
                         <span>Выберите пол ребенка</span>
-                        <select class='gender-item' >
+                        <select data-choiceGender="gender" class='gender-item' >
                             <option value='gender' >Выберите...</option>
                             <option value='female' >Девочка</option>
                             <option value='male' >Мальчик</option>
@@ -53,7 +59,7 @@ const questionThree = () => {
                     </div>
                     <div class='create-age' >
                         <span>Укажите возраст ребенка</span>
-                        <select class='age-item' >
+                        <select data-choiceAge="age" class='age-item' >
                             <option value='0' >0</option>
                             <option value='1' >1</option>
                             <option value='2' >2</option>
@@ -82,45 +88,67 @@ const questionThree = () => {
         </div>
     </div> 
     `;
-    const markupChildCard = `
-    <div class="child-card">
-    <img class='image-child' src='./img/child-card/male.png' />
-        <div class='child-info' >
-            <span class='title-gender'>Мальчик</span>
-            <span class='title-age'>4 года</span>
-        </div>
-</div>
-    `
 
- 
+    
 
+    console.log(main.state)
+    
     // Рендерим страницу
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree);
         
     }
 
+    // Записываем гендер и возраст
+    const getData = (gender, age) => {
+        if (gender === 'male') {gender = 'Мальчик'}
+        else if (gender === 'female') {gender = 'Девочка'}
+        console.log('Current card --> ', gender);
+        main.state.person.personCard.personAnswers.push(new main.CardQuestion(gender, age))
+    }
+
     // Добавить ребенка
     const addChild = () => {
-
         const addButton = document.querySelector('[data-create="child"]');
         
         addButton.addEventListener('click', (event) => {
 
+            
             const appElement = document.getElementById('app');
             appElement.parentNode.insertAdjacentHTML('afterbegin', markupCreateChild);
 
             const buttons = document.querySelectorAll('[data-button]');
 
             buttons.forEach((btn) => {
+                const elements = {
+                    age: document.querySelector('[data-choiceAge]'),
+                    gender: document.querySelector('[data-choiceGender]')
+                }
 
                 btn.addEventListener('click', (buttonItem) => {
 
                     if (buttonItem.target.dataset.button === 'add') {
-
-                        createChildCard();
+                        // console.dir(elements.gender)
+                        let genderConverseRus;
+                        if (elements.gender.value === 'male') {
+                            genderConverseRus = 'Мальчик'
+                        } else if (elements.gender.value === 'female') {
+                            genderConverseRus = 'Девочка'
+                        }
+                        const markupChildCard = `
+                            <div class="child-card">
+                                <img class='image-child' src='./img/child-card/male.png' />
+                                    <div class='child-info' >
+                                        <span class='title-gender'>Пол: ${genderConverseRus}</span>
+                                        <span class='title-age'>Возраст: ${elements.age.value}</span>
+                                    </div>
+                            </div>
+                        `;
+                        createChildCard(markupChildCard);
                         closeCreateFrame();
-                        console.log('This - add')
+                        getData(elements.gender.value, elements.age.value);
+                        console.log(main.state.person.personCard)
+
                     } else if (buttonItem.target.dataset.button === 'close') {
 
                         console.log('This - close', buttonItem.target);
@@ -133,8 +161,8 @@ const questionThree = () => {
     }
 
     // Создать карточку ребенка
-    const createChildCard = () => {
-        document.querySelector('.child-container').insertAdjacentHTML('afterbegin', markupChildCard)
+    const createChildCard = (markup) => {
+        document.querySelector('.child-container').insertAdjacentHTML('afterbegin', markup)
     }
 
 

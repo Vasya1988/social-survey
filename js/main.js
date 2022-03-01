@@ -69,6 +69,47 @@ export const routes = [
 
 ];
 
+export const state = new Object;
+
+// ----------------------- Карточка резидента
+export class Person {
+    constructor (name, children) {
+        this.personCard = {
+            personName: name,
+            children: children,
+            personAnswers: []
+        }
+    }
+}
+
+// ----------------------- Создаем карточку
+export const createCard = (name) => {
+    state.person = new Person(name);
+    console.log('The person was created --> ', state.person.personCard)
+}
+
+// ----------------------- Добавляем картоку с ответами в state
+export const addCardQuestion = () => {
+    
+}
+
+
+// ----------------------- Карточка ответов
+export class CardQuestion {
+    constructor(gender, age, shoesSize, questionSize, widthOfFoot, shoesTrouble, whichBrand ) {
+        this.card = {
+            gender: gender,
+            age: age,
+            shoesSize: shoesSize,
+            questionSize: questionSize,
+            widthOfFoot: widthOfFoot,
+            shoesTrouble: shoesTrouble,
+            whichBrand: whichBrand
+        }
+    }
+}
+
+
 // ----------------------- Рендерим разметку
 
 export function render (markup) {
@@ -97,10 +138,9 @@ export function render (markup) {
 
 // ----------------------- Функция для тестов
 
-function test(path) {
+export function test(path) {
     return new Promise((resolve, reject) => {
-
-
+        console.log(path)
     })
 }
 

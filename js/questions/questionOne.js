@@ -1,3 +1,5 @@
+import * as main from '../main.js';
+
 const questionOne = () => {
     const markupQuestionOne = `
         <div class="counter">
@@ -27,19 +29,30 @@ const questionOne = () => {
 
         <div class="question-6">
             <h3>Укажите, пожалуйста, ваше имя</h3>
-            <input placeholder='Ваш ответ' class='enterYourAnswer' type=text />
+            <input placeholder='Ваш ответ' data-name="yourName" class='enterYourAnswer' type=text />
         </div>
 
 
         <div class='progress-line'>
             <div></div>
         </div>
-        `
+        `;
 
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionOne)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionOne);
+        getAnswer()
     };
 
+    const getAnswer = () => {
+        const answerInput = document.querySelector('[data-name]');
+
+        answerInput.addEventListener('change', (item) => {
+            console.log(item.target.value);
+            main.createCard(item.target.value)
+
+        })
+    }
+    
 
     return renderPage();
 }
