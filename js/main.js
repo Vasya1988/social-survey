@@ -94,6 +94,16 @@ export const addCardQuestion = () => {
 }
 
 
+// Выбор аватара для разных гендеров
+export const choiceAvatar = (path) => {
+    if (path === 'Мальчик') {
+        return './img/child-card/male.png';
+
+    } else if (path === 'Девочка') {
+        return './img/child-card/female.png';
+    }
+}
+
 // ----------------------- Карточка ответов
 export class CardQuestion {
     constructor(gender, age, shoesSize, questionSize, widthOfFoot, shoesTrouble, whichBrand ) {

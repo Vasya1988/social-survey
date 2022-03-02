@@ -129,15 +129,19 @@ const questionThree = () => {
 
                     if (buttonItem.target.dataset.button === 'add') {
                         // console.dir(elements.gender)
+                        getData(elements.gender.value, elements.age.value);
                         let genderConverseRus;
+                        let choiceAvatar;
                         if (elements.gender.value === 'male') {
-                            genderConverseRus = 'Мальчик'
+                            genderConverseRus = 'Мальчик';
+                            // choiceAvatar = './img/child-card/male.png';
                         } else if (elements.gender.value === 'female') {
-                            genderConverseRus = 'Девочка'
+                            genderConverseRus = 'Девочка';
+                            // choiceAvatar = './img/child-card/female.png';
                         }
                         const markupChildCard = `
                             <div class="child-card">
-                                <img class='image-child' src='./img/child-card/male.png' />
+                                <img class='image-child' src=${main.choiceAvatar(genderConverseRus)} />
                                     <div class='child-info' >
                                         <span class='title-gender'>Пол: ${genderConverseRus}</span>
                                         <span class='title-age'>Возраст: ${elements.age.value}</span>
@@ -146,7 +150,7 @@ const questionThree = () => {
                         `;
                         createChildCard(markupChildCard);
                         closeCreateFrame();
-                        getData(elements.gender.value, elements.age.value);
+                        
                         console.log(main.state.person.personCard)
 
                     } else if (buttonItem.target.dataset.button === 'close') {

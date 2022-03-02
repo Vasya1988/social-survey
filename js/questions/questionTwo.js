@@ -24,7 +24,7 @@ const questionTwo = () => {
         <span>67%</span>
         <div class="buttons">
             <a href='#/q1' type="button" class='button' >Назад</a>
-            <a href='#/q3' type="button" class='button' >Вперед</a>
+            <a href='#/q3' data-button="forward" type="button" class='button' >Вперед</a>
         </div>
     </div>
     
@@ -57,12 +57,13 @@ const questionTwo = () => {
     
     `;
 
+    // Рендер страницы
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionTwo);
         addAnswerToCard()
     };
 
-
+    // Добавляем ответы в state
     const addAnswerToCard = () => {
         const radioGroupButton = document.querySelectorAll('[name=radio-group]');
 
@@ -85,13 +86,23 @@ const questionTwo = () => {
                         }
                     }
                     main.state.person.personCard.children = converseToRussian;
+
+                    if (main.state.person.personCard.children === 'Нет детей') {
+                        addQuestionWithoutChildren();
+                        document.querySelector('[data-button]').href=`#/q4`
+                        console.log(document.querySelector('[data-button]').href)
+                    }
                     console.log(main.state.person.personCard);
                 }
             });
         })
     }
 
-
+    // Добавляем карточку ответов, если указали - нет детей
+    const addQuestionWithoutChildren = () => {
+        main.state.person.personCard.personAnswers.push(new main.CardQuestion('Детей нет - ответ недоступен', 'Детей нет - ответ недоступен'));
+        console.log(main.state);
+    }
     console.log(main.state)
     
 
