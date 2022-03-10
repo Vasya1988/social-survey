@@ -40,28 +40,27 @@ const questionFour = () => {
 
     console.log(main.state)
 
+    const personState = main.state.person.personCard;
     // Рендер страницы
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionFour);
         checkChildren();
         addChildCard();
+        getShoesSize()
     }
 
     // Перейти мимо страницы с указанием детей
     // если детей нет
     const checkChildren = () => {
-        if (main.state.person.personCard.children === 'Нет детей') {
+        if (personState.children === 'Нет детей') {
             document.querySelector('[data-button="back"]').href = `#/q2`
         }
     }
     
     // Добавление карточек детей, если их указывали
     const addChildCard = () => {
-        let personState = main.state.person.personCard;
-        
 
-        personState.personAnswers.map((card) => {
-            
+        personState.personAnswers.map((card, index) => {
             const markupCardChild = `
                     <div class="child-card">
                     <img class='image-child' src='${main.choiceAvatar(card.card.gender)}' />
@@ -71,7 +70,7 @@ const questionFour = () => {
 
                             <div class='create-age' >
                                 <span>Размер: &nbsp </span>
-                                <select class='size-list' >
+                                <select data-shoes="size" class='size-list' >
                                     <option value='20' >20</option>
                                     <option value='21' >21</option>
                                     <option value='22' >22</option>
@@ -104,9 +103,26 @@ const questionFour = () => {
                         </div>
                 </div>
             `;
-            document.querySelector('.question-4').insertAdjacentHTML('beforeend', markupCardChild)
-            console.log(card.card.gender);
+            document.querySelector('.question-4').insertAdjacentHTML('beforeend', markupCardChild);
         })
+    }
+
+    // Записываем ответы в state
+    const getShoesSize = () => {
+
+        // Получаем Input откуда забираем value
+        const gg = document.querySelectorAll('[data-shoes="size"]');
+
+        // Добавляем прослушку каждого input
+        gg.forEach((e, index) => {
+            e.addEventListener('input', (item) => {
+
+                // Записываем ответ в state
+                personState.personAnswers[index].card.shoesSize = item.target.value;
+                console.log(personState);
+            })
+        })
+        
     }
 
     return renderPage();
