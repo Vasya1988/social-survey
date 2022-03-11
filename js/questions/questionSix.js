@@ -30,25 +30,25 @@ const questionSix = () => {
         <h3>Знаете ли Вы как правильно измерять длину стопы ребенка?</h3>
         <div class="questions-group ">
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input name="radio-group" data-foot="size" type="radio" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Да, периодичечски проверяю</span>
             </label>
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input name="radio-group" data-foot="size" type="radio" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Да, но не измеряю</span>
             </label>
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input name="radio-group" data-foot="size" type="radio" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Не знаю</span>
             </label>
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input name="radio-group"  data-foot="other" type="radio" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Другое: </span>
-                <input class='enterYourAnswer otherAnswer' type=text />
+                <input data-foot="own-answer"  class='enterYourAnswer otherAnswer' type=text />
             </label>
         </div>
     </div>
@@ -58,9 +58,28 @@ const questionSix = () => {
     </div>
     `;
 
+    
+
+    // Рендерим страницу
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSix)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSix);
+
+        // const answerElement = document.querySelectorAll('[data-foot]');
+        // console.log(answerElement);
+        // getAnswer(answerElement)
     };
+
+    const getAnswer = (elements) => {
+        // console.log(elements);
+
+        // elements.array.forEach(element => {
+        //     if (element.checked === 'true') {
+        //         console.log(element)
+        //     }
+        // });
+
+
+    }
 
 
     return renderPage();
