@@ -73,13 +73,32 @@ export const state = new Object;
 
 // ----------------------- Карточка резидента
 export class Person {
-    constructor (name, children) {
+    constructor (name, children, measureLength, shoesTrouble) {
         this.personCard = {
             personName: name,
             children: children,
-            personAnswers: []
+            personAnswers: [],
+            measureLength: {
+                question: 'Знаете ли Вы как правильно измерять длину стопы ребенка?',
+                answer: measureLength
+            },
+            shoesTrouble: shoesTrouble
         }
     }
+}
+
+// События кнопок вперед-назад
+export const clickButtons = () => {
+    const buttons = document.querySelectorAll('[data-buttons]')
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            if (button.dataset.buttons === 'forward') {
+                console.log('Forward --> ')
+            } else if (button.dataset.buttons === 'back') {
+                console.log('Back --> ')
+            }
+        })
+    })
 }
 
 // ----------------------- Создаем карточку
@@ -106,14 +125,12 @@ export const choiceAvatar = (path) => {
 
 // ----------------------- Карточка ответов
 export class CardQuestion {
-    constructor(gender, age, shoesSize, questionSize, widthOfFoot, shoesTrouble, whichBrand ) {
+    constructor(gender, age, shoesSize, shoesLength, whichBrand ) {
         this.card = {
             gender: gender,
             age: age,
             shoesSize: shoesSize,
-            questionSize: questionSize,
-            widthOfFoot: widthOfFoot,
-            shoesTrouble: shoesTrouble,
+            shoesLength: shoesLength,
             whichBrand: whichBrand
         }
     }

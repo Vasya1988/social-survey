@@ -1,3 +1,6 @@
+import * as main from '../main.js';
+
+
 const questionEight = () => {
     const markupQuestionEight = `
 
@@ -21,8 +24,8 @@ const questionEight = () => {
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
-                <a href='#/q7' type="button" class='button' >Назад</a>
-                <a href='#/q9' type="button" class='button' >Вперед</a>
+                <a href='#/q7' data-buttons="back" type="button" class='button' >Назад</a>
+                <a href='#/q9' data-buttons="forward" type="button" class='button' >Вперед</a>
             </div>
         </div>
 
@@ -30,22 +33,22 @@ const questionEight = () => {
         <h3>Сталкиваетесь ли вы при выборе детской обуви со следующими проблемами?</h3>
         <div class="questions-group ">
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input data-problems="baseAnswer" type="checkbox" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Обувь слишком узкая</span>
             </label>
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input data-problems="baseAnswer" type="checkbox" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Обувь слишком широкая</span>
             </label>
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input data-problems="baseAnswer" type="checkbox" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Нет проблем</span>
             </label>
             <label class="label">
-                <input type="checkbox" class="checkbox-origin">
+                <input data-problems="other" type="checkbox" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Другое: </span>
                 <input class='enterYourAnswer otherAnswer' type=text />
@@ -58,8 +61,35 @@ const questionEight = () => {
     </div>
     `;
 
+    console.log(main.state.person.personCard)
+
+    const personCard = main.state.person.personCard;
+
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionEight)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionEight);
+
+        main.clickButtons(getAnswer('.label'))
+        ;
+    }
+
+    
+
+    // Собираем ответы
+    const getAnswer = (elements) => {
+        personCard.shoesTrouble = new Array;
+        const inputPath = document.querySelectorAll(elements);
+        inputPath.forEach((element, index) => {
+            element.addEventListener('input', () => {
+                if (element.children[0].checked === true) {
+                    console.log(element.children[2], index);
+
+                    
+                    personCard.shoesTrouble.push(element.children[2].innerText)
+                    console.log(personCard)
+                }
+            })
+        })
+
     }
 
     return renderPage();

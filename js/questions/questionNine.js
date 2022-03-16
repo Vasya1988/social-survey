@@ -1,4 +1,8 @@
+import * as main from '../main.js';
+
 const questionNine = () => {
+
+    console.log(main.state)
     const markupQuestionNine = `
 
         <div class="counter">

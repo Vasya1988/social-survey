@@ -111,10 +111,10 @@ const questionFour = () => {
     const getShoesSize = () => {
 
         // Получаем Input откуда забираем value
-        const gg = document.querySelectorAll('[data-shoes="size"]');
+        const inputPath = document.querySelectorAll('[data-shoes="size"]');
 
         // Добавляем прослушку каждого input
-        gg.forEach((e, index) => {
+        inputPath.forEach((e, index) => {
             e.addEventListener('input', (item) => {
 
                 // Записываем ответ в state

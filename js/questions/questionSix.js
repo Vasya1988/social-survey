@@ -1,3 +1,5 @@
+import * as main from '../main.js';
+
 const questionSix = () => {
     const markupQuestionSix = `
 
@@ -32,7 +34,7 @@ const questionSix = () => {
             <label class="label">
                 <input name="radio-group" data-foot="size" type="radio" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
-                <span class="optionOfAnswer">Да, периодичечски проверяю</span>
+                <span class="optionOfAnswer">Да, периодически проверяю</span>
             </label>
             <label class="label">
                 <input name="radio-group" data-foot="size" type="radio" class="checkbox-origin">
@@ -48,7 +50,7 @@ const questionSix = () => {
                 <input name="radio-group"  data-foot="other" type="radio" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class="optionOfAnswer">Другое: </span>
-                <input data-foot="own-answer"  class='enterYourAnswer otherAnswer' type=text />
+                <input name="radio-group" data-foot="own-answer"  class='enterYourAnswer otherAnswer' type=text />
             </label>
         </div>
     </div>
@@ -64,19 +66,39 @@ const questionSix = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSix);
 
-        // const answerElement = document.querySelectorAll('[data-foot]');
-        // console.log(answerElement);
-        // getAnswer(answerElement)
+        const answerElement = document.querySelectorAll('.label');
+        console.log(answerElement);
+        getAnswer(answerElement);
     };
 
+    // Собираем ответы
     const getAnswer = (elements) => {
         // console.log(elements);
+        elements.forEach(element => {
+            element.addEventListener('input', (e) => {
+                
+                // Если ответ выбран из предложенных
+                if (element.children[0].dataset.foot === 'size') {
 
-        // elements.array.forEach(element => {
-        //     if (element.checked === 'true') {
-        //         console.log(element)
-        //     }
-        // });
+                    main.state.person.personCard.measureLength.answer = element.children[2].innerText;
+                    console.log(main.state.person.personCard);
+                    elements[3].children[3].value=''
+                    
+                } 
+                    // Если ответ выбран свой
+                else if (element.children[0].dataset.foot === 'other') {
+                    
+                    if (element.children[3].value != '') {
+                        element.children[0].checked = true;
+                        main.state.person.personCard.measureLength.answer = element.children[3].value;
+                        console.log(element.children[3].value);
+                        console.log(main.state.person.personCard);
+                    } else {
+                        element.children[3].value = '';
+                    }
+                }
+            })
+        });
 
 
     }
