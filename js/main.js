@@ -88,12 +88,13 @@ export class Person {
 }
 
 // События кнопок вперед-назад
-export const clickButtons = () => {
+export const clickButtons = (func, elem) => {
     const buttons = document.querySelectorAll('[data-buttons]')
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
             if (button.dataset.buttons === 'forward') {
-                console.log('Forward --> ')
+                console.log('Forward --> ');
+                func(elem)
             } else if (button.dataset.buttons === 'back') {
                 console.log('Back --> ')
             }
