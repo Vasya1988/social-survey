@@ -23,8 +23,8 @@ const questionSix = () => {
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
-                <a href='#/q4' type="button" class='button' >Назад</a>
-                <a href='#/q7' type="button" class='button' >Вперед</a>
+                <a href='#/q4' data-buttons="back" type="button" class='button' >Назад</a>
+                <a href='#/q7' data-buttons="forward" type="button" class='button' >Вперед</a>
             </div>
         </div>
 
@@ -68,40 +68,11 @@ const questionSix = () => {
 
         const answerElement = document.querySelectorAll('.label');
         console.log(answerElement);
-        getAnswer(answerElement);
+        main.checkClass('.label');
+        main.clickButtons(main.getAnswer, '.label', 'measureLength');
     };
 
-    // Собираем ответы
-    const getAnswer = (elements) => {
-        // console.log(elements);
-        elements.forEach(element => {
-            element.addEventListener('input', (e) => {
-                
-                // Если ответ выбран из предложенных
-                if (element.children[0].dataset.foot === 'size') {
-
-                    main.state.person.personCard.measureLength.answer = element.children[2].innerText;
-                    console.log(main.state.person.personCard);
-                    elements[3].children[3].value=''
-                    
-                } 
-                    // Если ответ выбран свой
-                else if (element.children[0].dataset.foot === 'other') {
-                    
-                    if (element.children[3].value != '') {
-                        element.children[0].checked = true;
-                        main.state.person.personCard.measureLength.answer = element.children[3].value;
-                        console.log(element.children[3].value);
-                        console.log(main.state.person.personCard);
-                    } else {
-                        element.children[3].value = '';
-                    }
-                }
-            })
-        });
-
-
-    }
+  
 
 
     return renderPage();

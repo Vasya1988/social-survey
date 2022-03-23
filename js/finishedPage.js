@@ -17,6 +17,8 @@ const finishedPage = () => {
 
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupFinishedPage);
+
+        console.log(main.state.person.personCard);
     }
 
     return renderPage();

@@ -25,8 +25,8 @@ const questionNine = () => {
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
-                <a href='#/q8' type="button" class='button' >Назад</a>
-                <a href='#/finished' type="button" class='button' >Вперед</a>
+                <a href='#/q8' data-buttons="back" type="button" class='button' >Назад</a>
+                <a href='#/finished' data-buttons="forward" type="button" class='button' >Вперед</a>
             </div>
         </div>
 
@@ -214,7 +214,18 @@ const questionNine = () => {
     `;
 
     const renderPage = () => {
-        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionNine)
+        document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionNine);
+
+        
+
+        document.querySelectorAll('.label').forEach((e, index) => {
+            if (e.children.length > 3) {
+                console.log(e)
+            }
+        })
+
+        main.checkClass('.label');
+        main.clickButtons(main.getAnswer, '.label', 'whichBrand');
     }
 
     return renderPage();

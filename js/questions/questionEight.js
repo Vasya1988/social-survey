@@ -68,39 +68,8 @@ const questionEight = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionEight);
 
-        checkClass('.label');
-        main.clickButtons(getAnswer, '.label');
-    }
-
-    // Смена чекбокса у ответа "другой"
-    const checkClass = (name) => {
-        const checkInput = document.querySelectorAll(name);
-        checkInput[3].addEventListener('input', () => {
-            if (checkInput[3].children[3].value != '') {
-                checkInput[3].children[0].checked = true
-            } else { checkInput[3].children[0].checked = false }
-        })
-    }
-
-    // Собираем ответы
-    const getAnswer = (elements) => {
-        personCard.shoesTrouble = new Array;
-        const inputPath = document.querySelectorAll(elements);
-
-        inputPath.forEach((element, index) => {
-
-                if (element.children[0].checked === true) {
-                    // console.log(element.children[2], index);
-                    if (element.children.length > 3) {
-                        personCard.shoesTrouble.push(element.children[3].value)
-                    } else {
-                        personCard.shoesTrouble.push(element.children[2].innerText);
-                    }
-                    console.log(personCard)
-                    console.log(element.children[3]);
-                }
-        })
-
+        main.checkClass('.label');
+        main.clickButtons(main.getAnswer, '.label', 'shoesTrouble');
     }
 
     return renderPage();

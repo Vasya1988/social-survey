@@ -90,13 +90,13 @@ const questionThree = () => {
     `;
 
     
-
-    console.log(main.state)
+    const personState = main.state.person.personCard;
+    console.log(main.state);
     
     // Рендерим страницу
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree);
-        
+        personState.personAnswers = [];
     }
 
     // Записываем гендер и возраст
@@ -104,7 +104,7 @@ const questionThree = () => {
         if (gender === 'male') {gender = 'Мальчик'}
         else if (gender === 'female') {gender = 'Девочка'}
         console.log('Current card --> ', gender);
-        main.state.person.personCard.personAnswers.push(new main.CardQuestion(gender, age))
+        personState.personAnswers.push(new main.CardQuestion(gender, age))
     }
 
     // Добавить ребенка

@@ -33,19 +33,19 @@ const questionTwo = () => {
         <h3>Есть ли у Вас дети?</h3>
         <div class="questions-group">
             <label class="label">
-                <input type="radio" value="one" name="radio-group" class="checkbox-origin">
+                <input data-check-answer type="radio" value="one" name="radio-group" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class='optionOfAnswer' data-children="one" >Да, один ребенок</span>
             </label>
             
             <label class="label">
-                <input type="radio" value="twoOrMore" name="radio-group" id="checkChildrenItem" class="checkbox-origin">
+                <input data-check-answer type="radio" value="twoOrMore" name="radio-group" id="checkChildrenItem" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class='optionOfAnswer' data-children="twoOrMore" >Да, два и более</span>
             </label>
             
             <label class="label">
-                <input type="radio" value="noChildren" name="radio-group" class="checkbox-origin">
+                <input data-check-answer type="radio" value="noChildren" name="radio-group" class="checkbox-origin">
                 <span class="checkbox-fake"></span>
                 <span class='optionOfAnswer' data-children="noChildren" >Нет детей</span>
             </label>
@@ -57,10 +57,13 @@ const questionTwo = () => {
     
     `;
 
+
+    const personCard = main.state.person.personCard;
     // Рендер страницы
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionTwo);
-        addAnswerToCard()
+        addAnswerToCard();
+        checkName();
     };
 
     // Добавляем ответы в state
@@ -105,6 +108,22 @@ const questionTwo = () => {
     }
     console.log(main.state)
     
+    const checkName = () => {
+        const pathName = document.querySelectorAll('.label');
+        const btnForward = document.querySelector('[data-button="forward"]');
+
+        btnForward.addEventListener('click', (check) => {
+            pathName.map((e, index) => {
+                if (e.checked === true) {
+                    return true
+                } else {
+                    alert('Выберите ответ');
+                    check.preventDefault();
+                    return false;
+                }
+            })
+        })
+    }
 
     return renderPage();
 }
