@@ -1,6 +1,9 @@
 import * as main from '../main.js';
 
 const questionThree = () => {
+
+    main.checkPerson();
+
     const currentCard = {
         currentGender: null,
         currentAge: null

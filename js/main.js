@@ -76,7 +76,10 @@ export class Person {
     constructor (name, children, personAnswers, measureLength, shoesTrouble, whichBrand) {
         this.personCard = {
             personName: name,
-            children: children,
+            children: {
+                question: 'Есть ли у Вас дети?',
+                answer: null
+            },
             personAnswers: [],
             measureLength: {
                 question: 'Знаете ли Вы как правильно измерять длину стопы ребенка?',
@@ -94,15 +97,23 @@ export class Person {
     }
 }
 
+// Сборс опроса на первую страницу
+export const checkPerson = () => {
+    if (Object.keys(state).length === 0) {
+        location.hash = '#/startPage';
+        return false
+    }
+}
+
 // События кнопок вперед-назад
 export const clickButtons = (func, elem, name) => {
-    const buttons = document.querySelectorAll('[data-buttons]')
+    const buttons = document.querySelectorAll('[data-buttons]');
     buttons.forEach((button) => {
         button.addEventListener('click', (btn) => {
             if (button.dataset.buttons === 'forward') {
                 console.log('Forward --> ');
                 func(elem, name);
-                checkAnswer(name, btn)
+                checkAnswer(name, btn);
             } else if (button.dataset.buttons === 'back') {
                 console.log('Back --> ')
             }
@@ -138,13 +149,14 @@ export const checkClass = (name) => {
     const checkInput = document.querySelectorAll(name);
     checkInput.forEach((item, index) => {
         if (item.children.length > 3) {
-            checkInput[index].addEventListener('input', () => {
+            checkInput[index].addEventListener('input', (e) => {
                 if (checkInput[index].children[3].value != '') {
                     checkInput[index].children[0].checked = true;
                     console.log('check -- true')
-                } else { checkInput[index].children[0].checked = false; console.log('check -- false') }
-                console.log(checkInput[index].children[3])
-                
+                } else { 
+                    checkInput[index].children[0].checked = false; 
+                    console.log('check -- false');
+                }
             })
         }
     })
@@ -158,9 +170,19 @@ export const checkAnswer = (name, btn) => {
         alert('Пожалуйста, введите ответ');
         btn.preventDefault()
         return false
+    } else {
+        noChildren(pathAnswer)
     }
 }
 
+// Если указали - "Нет детей"
+const noChildren = (pathName) => {
+    // document.querySelector('[data-button]').href=`#/q4`
+    if (pathName[0] === 'Нет детей') {
+        console.log('From noChildren func --> ', pathName)
+        document.querySelector('[data-buttons="forward"]').href=`#/q4`
+    }
+}
 
 
 
@@ -170,10 +192,6 @@ export const createCard = (name) => {
     console.log('The person was created --> ', state.person.personCard)
 }
 
-// ----------------------- Добавляем картоку с ответами в state
-export const addCardQuestion = () => {
-    
-}
 
 
 // Выбор аватара для разных гендеров

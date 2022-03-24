@@ -2,6 +2,8 @@ import * as main from '../main.js';
 
 const questionNine = () => {
 
+    main.checkPerson();
+
     console.log(main.state)
     const markupQuestionNine = `
 
@@ -225,6 +227,14 @@ const questionNine = () => {
         })
 
         main.checkClass('.label');
+        document.querySelectorAll('.label')[33].addEventListener('change', (e) => {
+            if (e.target.checked === true) {
+                console.log(e.target);
+                document.querySelectorAll('.label')[33].children[0].checked = false;
+                document.querySelectorAll('.label')[33].children[3].value = '';
+            } 
+            
+        })
         main.clickButtons(main.getAnswer, '.label', 'whichBrand');
     }
 

@@ -2,6 +2,9 @@ import * as main from '../main.js';
 
 
 const questionEight = () => {
+
+    main.checkPerson();
+
     const markupQuestionEight = `
 
         <div class="counter">
@@ -69,8 +72,18 @@ const questionEight = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionEight);
 
         main.checkClass('.label');
+        document.querySelectorAll('.label')[3].addEventListener('change', (e) => {
+            if (e.target.checked === true) {
+                console.log(e.target);
+                document.querySelectorAll('.label')[3].children[0].checked = false;
+                document.querySelectorAll('.label')[3].children[3].value = '';
+            } 
+            
+        })
         main.clickButtons(main.getAnswer, '.label', 'shoesTrouble');
     }
+
+
 
     return renderPage();
 }

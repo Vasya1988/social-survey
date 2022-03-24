@@ -1,6 +1,9 @@
 import * as main from '../main.js';
 
 const questionSix = () => {
+
+    main.checkPerson();
+
     const markupQuestionSix = `
 
         <div class="counter">
@@ -69,10 +72,18 @@ const questionSix = () => {
         const answerElement = document.querySelectorAll('.label');
         console.log(answerElement);
         main.checkClass('.label');
+        // Снимаем галочку с radio
+        answerElement.forEach((e) => {
+            e.addEventListener('change', (r) => {
+                if (answerElement[3].children[0].checked === false) {
+                    answerElement[3].children[3].value = ''
+                }
+            })
+        })
         main.clickButtons(main.getAnswer, '.label', 'measureLength');
     };
 
-  
+    
 
 
     return renderPage();

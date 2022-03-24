@@ -1,6 +1,19 @@
 import * as main from '../main.js';
 
+
+
 const questionTwo = () => {
+
+    main.checkPerson();
+
+    // if (main.state.person === true) {
+    //     return true
+    // } else {
+    //     location.hash = '#/startPage';
+    //     return false
+    // }
+
+
     const markupQuestionTwo = 
     `
     <div class="counter">
@@ -23,8 +36,8 @@ const questionTwo = () => {
     <div class='nav-button'>
         <span>67%</span>
         <div class="buttons">
-            <a href='#/q1' type="button" class='button' >Назад</a>
-            <a href='#/q3' data-button="forward" type="button" class='button' >Вперед</a>
+            <a href='#/q1' data-buttons="back" type="button" class='button' >Назад</a>
+            <a href='#/q3' data-buttons="forward" type="button" class='button' >Вперед</a>
         </div>
     </div>
     
@@ -59,71 +72,24 @@ const questionTwo = () => {
 
 
     const personCard = main.state.person.personCard;
+
+    
+
+
     // Рендер страницы
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionTwo);
-        addAnswerToCard();
-        checkName();
+        main.checkClass('.label');
+        main.clickButtons(main.getAnswer, '.label', 'children');
     };
 
-    // Добавляем ответы в state
-    const addAnswerToCard = () => {
-        const radioGroupButton = document.querySelectorAll('[name=radio-group]');
-
-        radioGroupButton.forEach((item) => {
-            item.addEventListener('input', () => {
-                if (item.checked === true) {
-                    let converseToRussian;
-                    switch(item.value) {
-                        case 'one':{
-                            converseToRussian = 'Один ребенок';
-                            break;
-                        };
-                        case 'twoOrMore': {
-                            converseToRussian = 'Два и более ребенка';
-                            break;
-                        };
-                        case 'noChildren': {
-                            converseToRussian = 'Нет детей';
-                            break;
-                        }
-                    }
-                    main.state.person.personCard.children = converseToRussian;
-
-                    if (main.state.person.personCard.children === 'Нет детей') {
-                        addQuestionWithoutChildren();
-                        document.querySelector('[data-button]').href=`#/q4`
-                        console.log(document.querySelector('[data-button]').href)
-                    }
-                    console.log(main.state.person.personCard);
-                }
-            });
-        })
-    }
-
     // Добавляем карточку ответов, если указали - нет детей
-    const addQuestionWithoutChildren = () => {
-        main.state.person.personCard.personAnswers.push(new main.CardQuestion('Детей нет - ответ недоступен', 'Детей нет - ответ недоступен'));
-        console.log(main.state);
-    }
+    // const addQuestionWithoutChildren = () => {
+    //     main.state.person.personCard.personAnswers.push(new main.CardQuestion('Детей нет - ответ недоступен', 'Детей нет - ответ недоступен'));
+    //     console.log(main.state);
+    // }
     console.log(main.state)
     
-    const checkName = () => {
-        const pathName = document.querySelectorAll('.label');
-        const btnForward = document.querySelector('[data-button="forward"]');
-
-        btnForward.addEventListener('click', (check) => {
-            pathName.map((e, index) => {
-                if (e.checked === true) {
-                    return true
-                } else {
-                    alert('Выберите ответ');
-                    check.preventDefault();
-                    return false;
-                }
-            })
-        })
-    }
 
     return renderPage();
 }

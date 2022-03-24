@@ -4,6 +4,9 @@ import * as main from '../main.js';
 
 
 const questionSeven = () => {
+
+    main.checkPerson();
+
     const markupQuestionSeven = `
         <div class="counter">
             <nav>
