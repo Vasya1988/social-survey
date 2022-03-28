@@ -297,6 +297,16 @@ body {
     margin-top: 8px;
     margin-bottom: 8px;
 }
+.child-card-delete {
+    width: 26px;
+    height: 26px;
+    background-color: coral;
+    position: relative;
+    right: -26px;
+    top: -20px;
+    /* margin-right: 0px; */
+    cursor: pointer;
+}
 .image-child {
     max-width: 120px;
     width: 100%;

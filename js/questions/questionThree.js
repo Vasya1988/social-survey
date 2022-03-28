@@ -32,15 +32,17 @@ const questionThree = () => {
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
-                <a href='#/q2' type="button" class='button' >Назад</a>
-                <a href='#/q4' type="button" class='button' >Вперед</a>
+                <a href='#/q2' data-buttons="back" type="button" class='button' >Назад</a>
+                <a href='#/q4' data-buttons="forward"  type="button" class='button' >Вперед</a>
             </div>
         </div>
 
         <div class="question-3">
             <h2>Дети</h2>
             <button type='button' data-create='child' class='button add-child' >Добавить + </button>
-            <div class='child-container' ></div>
+            <div class='child-container' >
+                <div></div>
+            </div>
         </div>
 
         <div class='progress-line'>
@@ -103,12 +105,36 @@ const questionThree = () => {
     }
 
     // Записываем гендер и возраст
-    const getData = (gender, age) => {
-        if (gender === 'male') {gender = 'Мальчик'}
-        else if (gender === 'female') {gender = 'Девочка'}
-        console.log('Current card --> ', gender);
-        personState.personAnswers.push(new main.CardQuestion(gender, age))
+    const getChildCard = () => {
+        const getInfo = document.querySelectorAll('.child-card');
+        getInfo.forEach((item) => {
+
+            const gender = item.querySelector('[data-gender]').innerText;
+            const age = item.querySelector('[data-age]').innerText;
+
+            personState.personAnswers.push(new main.CardQuestion(gender, age));
+            
+            console.log(personState.personAnswers);
+        })
+
+
     }
+
+    const btnForward = () => {
+        return new Promise ((resolve, reject) => {
+            document
+                .querySelector('[data-buttons="forward"]')
+                .addEventListener('click', (e) => {
+
+                    getChildCard();
+                })
+            })
+    }
+    
+
+
+
+
 
     // Добавить ребенка
     const addChild = () => {
@@ -116,7 +142,6 @@ const questionThree = () => {
         
         addButton.addEventListener('click', (event) => {
 
-            
             const appElement = document.getElementById('app');
             appElement.parentNode.insertAdjacentHTML('afterbegin', markupCreateChild);
 
@@ -131,10 +156,8 @@ const questionThree = () => {
                 btn.addEventListener('click', (buttonItem) => {
 
                     if (buttonItem.target.dataset.button === 'add') {
-                        // console.dir(elements.gender)
-                        getData(elements.gender.value, elements.age.value);
+                        // console.dir(elements.gender);
                         let genderConverseRus;
-                        let choiceAvatar;
                         if (elements.gender.value === 'male') {
                             genderConverseRus = 'Мальчик';
                             // choiceAvatar = './img/child-card/male.png';
@@ -146,13 +169,16 @@ const questionThree = () => {
                             <div class="child-card">
                                 <img class='image-child' src=${main.choiceAvatar(genderConverseRus)} />
                                     <div class='child-info' >
-                                        <span class='title-gender'>Пол: ${genderConverseRus}</span>
-                                        <span class='title-age'>Возраст: ${elements.age.value}</span>
+                                        <span class='title-gender'>Пол: <span data-gender>${genderConverseRus}</span></span>
+                                        <span class='title-age'>Возраст: <span data-age>${elements.age.value}</span></span>
                                     </div>
+                                    
+                                    <div data-delete="child-card" class='child-card-delete' ></div>
                             </div>
                         `;
                         createChildCard(markupChildCard);
                         closeCreateFrame();
+                        deleteCard();
                         
                         console.log(main.state.person.personCard)
 
@@ -162,9 +188,14 @@ const questionThree = () => {
                         closeCreateFrame();
                     }
                 })
+
+                
+                        
             })
             
-        })
+        });
+
+        
     }
 
     // Создать карточку ребенка
@@ -172,17 +203,31 @@ const questionThree = () => {
         document.querySelector('.child-container').insertAdjacentHTML('afterbegin', markup)
     }
 
-
     // Событие кнопки close
     const closeCreateFrame = (props) => {
         document.body.children[0].remove()
 
     }
 
+    // Удалить карточку
+    const deleteCard = () => {
+        return new Promise((resolve, reject) => {
+            const elementDelete = document.querySelector('[data-delete="child-card"]');
+
+            elementDelete.addEventListener('click', (e) => {
+                console.log(e.target.parentNode);
+                e.target.parentNode.remove()
+            })
+
+
+        })
+    }
+
 
     async function startScript() {
         await renderPage();
         await addChild();
+        await btnForward()
     }
     return startScript();
     
