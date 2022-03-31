@@ -179,8 +179,9 @@ export const checkAnswer = (name, btn) => {
 const noChildren = (pathName) => {
     // document.querySelector('[data-button]').href=`#/q4`
     if (pathName[0] === 'Нет детей') {
-        console.log('From noChildren func --> ', pathName)
+        console.log('From noChildren func --> ', pathName);
         document.querySelector('[data-buttons="forward"]').href=`#/q4`
+        state.person.personCard.personAnswers = [];
     }
 }
 

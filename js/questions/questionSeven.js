@@ -7,6 +7,7 @@ const questionSeven = () => {
 
     main.checkPerson();
 
+    // Разметка страницы
     const markupQuestionSeven = `
         <div class="counter">
             <nav>
@@ -56,26 +57,13 @@ const questionSeven = () => {
         getInput('[data-shoes="length"]');
     }
 
-    const markupChildren = `
-        <div class="child-card">
-            <img class='image-child' src='./img/child-card/female.png' />
-            <div class='child-info' >
-                <span class='title-gender'>Девочка</span>
-                <span class='title-age'>2 года</span>
-                <span>Размер: 25 </span>
-                <div class='foot-size' >
-                    <span>Длина стопы:&nbsp  </span>
-                    <input class='' placeholder="Напишите..." type=text />
-                </div>    
-            </div>
-        </div>
-
-    `;
-
     const checkChildren = () => {
-        if (main.state.person.personCard.children != 'Нет детей') {
+        if (main.state.person.personCard.children.answer[0] != 'Нет детей') {
             addChildCard();
+        } else {
+            console.log('Детей нет --> ')
         }
+        
     }
 
     // Рендерим количество детей
