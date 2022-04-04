@@ -206,9 +206,10 @@ body {
 .question-2, .question-3, .question-4, .question-5, .question-6, .question-7, .question-8, .question-9, .question-10 {
     grid-row: 10/24;
 }
-.question-4 {
+.question-4, .question-7 {
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 .question-4 > h3 {
     width: 100%;
@@ -341,6 +342,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .foot-size > input {
     width: 90px;
     height: 20px;
@@ -352,6 +354,17 @@ body {
 }
 .foot-size > input:focus-visible {
     outline: none;
+}
+.no-children {
+    margin-top: 36px;
+    align-items: flex-end;
+    flex-direction: inherit;
+    align-items: baseline;
+}
+.no-children > span {
+    margin-top: 4px;
+    font-weight: bold;
+    color: #5b5b5b;
 }
 
 

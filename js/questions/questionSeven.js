@@ -54,14 +54,22 @@ const questionSeven = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSeven);
 
         checkChildren();
-        getInput('[data-shoes="length"]');
+        getShoesSize()
+        // getInput('[data-shoes="length"]');
     }
 
     const checkChildren = () => {
         if (main.state.person.personCard.children.answer[0] != 'Нет детей') {
             addChildCard();
         } else {
-            console.log('Детей нет --> ')
+            console.log('Детей нет --> ');
+            const markupCardNoChildren = `
+            <div class='foot-size no-children' >
+                <span>Длина стопы:&nbsp</span>
+                <input data-shoes="length"  placeholder="Напишите..." type=text />
+            </div>   
+            `;
+            document.querySelector('.question-7').insertAdjacentHTML('beforeend', markupCardNoChildren);
         }
         
     }
@@ -99,6 +107,37 @@ const questionSeven = () => {
         });
         console.log(personState)
     }
+
+
+    // Записываем ответы в state
+    const getShoesSize = () => {
+
+        // Получаем Input откуда забираем value
+        const inputPath = document.querySelectorAll('[data-shoes="length"]');
+
+        // Добавляем прослушку каждого input
+        inputPath.forEach((e, index) => {
+            e.addEventListener('blur', (item) => {
+                if (inputPath.length === 1) {
+                    // Обувь какого размера вы покупаете ребенку в данный момент?
+                    personState.personAnswers[index] ={
+                        question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
+                        answer: item.target.value
+                    }
+                    console.log(inputPath.length);
+                } else {
+                    // Записываем ответ в state
+                    personState.personAnswers[index].card.shoesSize = item.target.value;
+                    console.log(personState);
+                }
+
+                
+            })
+        })
+        
+    }
+
+
 
     return renderPage();
 }

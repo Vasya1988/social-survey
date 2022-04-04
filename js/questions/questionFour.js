@@ -48,7 +48,6 @@ const questionFour = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionFour);
         checkChildren();
-        
         getShoesSize()
     }
 
@@ -59,7 +58,7 @@ const questionFour = () => {
             document.querySelector('[data-button="back"]').href = `#/q2`;
             console.log('ДЕТЕЙ НЕТ --- ');
             const markupCardNoChild = `
-                <div class='create-age' >
+                <div class='create-age no-children' >
                 <span>Размер: &nbsp </span>
                 <select data-shoes="size" class='size-list' >
                     <option value='20' >20</option>
