@@ -54,7 +54,7 @@ const questionSeven = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSeven);
 
         checkChildren();
-        getShoesSize()
+        getShoesSize('length', 'shoesLength')
         // getInput('[data-shoes="length"]');
     }
 
@@ -110,28 +110,28 @@ const questionSeven = () => {
 
 
     // Записываем ответы в state
-    const getShoesSize = () => {
+    const getShoesSize = (path, noChildren) => {
 
         // Получаем Input откуда забираем value
-        const inputPath = document.querySelectorAll('[data-shoes="length"]');
+        const inputPath = document.querySelectorAll(`[data-shoes="${path}"]`);
 
         // Добавляем прослушку каждого input
         inputPath.forEach((e, index) => {
-            e.addEventListener('blur', (item) => {
-                if (inputPath.length === 1) {
-                    // Обувь какого размера вы покупаете ребенку в данный момент?
-                    personState.personAnswers[index] ={
+            e.addEventListener('input', (item) => {
+                if (personState.children.answer[0] === 'Нет детей') {
+                    console.log('Нет детей');
+                    personState.personAnswers[noChildren] = {
+                        question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
+                        answer: item.target.value
+                    };
+                    console.log(inputPath.length);
+                } else {
+                    console.log('Есть дети');
+                    personState.personAnswers[index].card[noChildren] = {
                         question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
                         answer: item.target.value
                     }
-                    console.log(inputPath.length);
-                } else {
-                    // Записываем ответ в state
-                    personState.personAnswers[index].card.shoesSize = item.target.value;
-                    console.log(personState);
                 }
-
-                
             })
         })
         

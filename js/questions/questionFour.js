@@ -48,7 +48,7 @@ const questionFour = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionFour);
         checkChildren();
-        getShoesSize()
+        getShoesSize('size', 'shoesSize')
     }
 
     // Перейти мимо страницы с указанием детей
@@ -150,28 +150,28 @@ const questionFour = () => {
     }
 
     // Записываем ответы в state
-    const getShoesSize = () => {
+    const getShoesSize = (path, noChildren) => {
 
         // Получаем Input откуда забираем value
-        const inputPath = document.querySelectorAll('[data-shoes="size"]');
+        const inputPath = document.querySelectorAll(`[data-shoes="${path}"]`);
 
         // Добавляем прослушку каждого input
         inputPath.forEach((e, index) => {
             e.addEventListener('input', (item) => {
-                if (inputPath.length === 1) {
-                    // Обувь какого размера вы покупаете ребенку в данный момент?
-                    personState.personAnswers.push({
+                if (personState.children.answer[0] === 'Нет детей') {
+                    console.log('Нет детей');
+                    personState.personAnswers[noChildren] = {
                         question: 'Обувь какого размера вы покупаете ребенку в данный момент?',
                         answer: item.target.value
-                    })
+                    };
                     console.log(inputPath.length);
                 } else {
-                    // Записываем ответ в state
-                    personState.personAnswers[index].card.shoesSize = item.target.value;
-                    console.log(personState);
+                    console.log('Есть дети');
+                    personState.personAnswers[index].card[noChildren] = {
+                        question: 'Обувь какого размера вы покупаете ребенку в данный момент?',
+                        answer: item.target.value
+                    };
                 }
-
-                
             })
         })
         

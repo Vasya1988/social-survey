@@ -70,7 +70,9 @@ const questionSix = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSix);
 
         const answerElement = document.querySelectorAll('.label');
-        console.log(answerElement);
+
+        const personState = main.state.person.personCard;
+        console.log(personState);
         main.checkClass('.label');
         // Снимаем галочку с radio
         answerElement.forEach((e) => {
