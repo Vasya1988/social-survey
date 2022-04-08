@@ -12,23 +12,6 @@ const questionThree = () => {
 
     const markupQuestionThree = `
 
-        <div class="counter">
-            <nav>
-                <ul>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">6</a></li>
-                    <li><a href="">7</a></li>
-                    <li><a href="">8</a></li>
-                    <li><a href="">9</a></li>
-                    <li><a href="">10</a></li>
-                </ul>
-            </nav>
-        </div>
-
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
@@ -37,7 +20,7 @@ const questionThree = () => {
             </div>
         </div>
 
-        <div class="question-3">
+        <div class="have-children">
             <h2>Дети</h2>
             <button type='button' data-create='child' class='button add-child' >Добавить + </button>
             <div class='child-container' >
@@ -45,9 +28,6 @@ const questionThree = () => {
             </div>
         </div>
 
-        <div class='progress-line'>
-            <div></div>
-        </div>
     `;
     const markupCreateChild = `
     <div class='create-frame-background' >
@@ -166,7 +146,7 @@ const questionThree = () => {
                             // choiceAvatar = './img/child-card/female.png';
                         }
                         const markupChildCard = `
-                            <div class="child-card">
+                            <div class="child-card create-child">
                                 <img class='image-child' src=${main.choiceAvatar(genderConverseRus)} />
                                     <div class='child-info' >
                                         <span class='title-gender'>Пол: <span data-gender>${genderConverseRus}</span></span>

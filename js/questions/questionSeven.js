@@ -9,22 +9,6 @@ const questionSeven = () => {
 
     // Разметка страницы
     const markupQuestionSeven = `
-        <div class="counter">
-            <nav>
-                <ul>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">6</a></li>
-                    <li><a href="">7</a></li>
-                    <li><a href="">8</a></li>
-                    <li><a href="">9</a></li>
-                    <li><a href="">10</a></li>
-                </ul>
-            </nav>
-        </div>
 
         <div class='nav-button'>
             <span>67%</span>
@@ -42,9 +26,6 @@ const questionSeven = () => {
             
         </div>
 
-        <div class='progress-line'>
-            <div></div>
-        </div>
         `;
 
     console.log(main.state);
@@ -55,9 +36,8 @@ const questionSeven = () => {
 
         checkChildren();
         getShoesSize('length', 'shoesLength');
-        checkAnswer('forward');
+        checkAnswer('[data-shoes="length"]', '[data-buttons="forward"]');
         // getInput('[data-shoes="length"]');
-        
     }
     
     // Проверка детей
@@ -87,7 +67,7 @@ const questionSeven = () => {
                         <div class='child-info' >
                             <span class='title-gender'>Пол: ${card.card.gender}</span>
                             <span class='title-age'>Возраст: ${card.card.age}</span>
-                            <span>Размер: ${card.card.shoesSize} </span>
+                            <span>Размер: ${card.card.shoesSize.answer} </span>
                             <div class='foot-size' >
                                 <span>Длина стопы:&nbsp</span>
                                 <input data-shoes="length"  placeholder="Напишите..." type=text />
@@ -146,16 +126,22 @@ const questionSeven = () => {
         
     }
 
-    const checkAnswer = (btn) => {
-        const forward = document.querySelector(`[data-buttons="${btn}"]`);
+    // Проверка на пустые поля
+    const checkAnswer = (element, btn) => {
+        const button = document.querySelector(btn),
+              checkArray = document.querySelectorAll(element);
 
-        forward.addEventListener('click', (e) => {
-            if(personState.personAnswers <= 1) {
-                console.log(personState.personAnswers.length)
-                e.preventDefault();
-                alert("Введите ответ")
-            }
+        button.addEventListener('click', (click) => {
+            [...checkArray].find((elem) => {
+                if (elem.value === 'Размер' || elem.value === '') {
+                    click.preventDefault()
+                    alert('Введите ответ')
+                    return elem
+                }
+            })
+            
         })
+        
     }
 
 

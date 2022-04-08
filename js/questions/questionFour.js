@@ -6,28 +6,11 @@ const questionFour = () => {
 
     const markupQuestionFour = `
 
-        <div class="counter">
-            <nav>
-                <ul>
-                    <li><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">4</a></li>
-                    <li><a href="">5</a></li>
-                    <li><a href="">6</a></li>
-                    <li><a href="">7</a></li>
-                    <li><a href="">8</a></li>
-                    <li><a href="">9</a></li>
-                    <li><a href="">10</a></li>
-                </ul>
-            </nav>
-        </div>
-
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
                 <a href='#/q2' data-button="back" type="button" class='button' >Назад</a>
-                <a href='#/q6' type="button" class='button' >Вперед</a>
+                <a href='#/q6' data-buttons='forward' type="button" class='button' >Вперед</a>
             </div>
         </div>
 
@@ -36,9 +19,6 @@ const questionFour = () => {
         
     </div>
 
-    <div class='progress-line'>
-        <div></div>
-    </div>
     `;
 
     console.log(main.state)
@@ -49,7 +29,7 @@ const questionFour = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionFour);
         checkChildren();
         getShoesSize('size', 'shoesSize');
-        checkAnswer('[data-shoes="size"]')
+        checkAnswer('[data-shoes="size"]', '[data-buttons="forward"]')
     }
 
     // Перейти мимо страницы с указанием детей
@@ -152,11 +132,22 @@ const questionFour = () => {
         })
     }
 
-    const checkAnswer = (element) => {
-        if (document.querySelector(element).value === 'Размер') {
-            alert('Ddtlbnt jndtn')
-            return false
-        }
+    // Проверка на пустые поля
+    const checkAnswer = (element, btn) => {
+        const button = document.querySelector(btn),
+              checkArray = document.querySelectorAll(element);
+
+        button.addEventListener('click', (click) => {
+            [...checkArray].find((elem) => {
+                if (elem.value === 'Размер' || elem.value === '') {
+                    click.preventDefault()
+                    alert('Введите ответ')
+                    return elem
+                }
+            })
+            
+        })
+        
     }
 
     // Записываем ответы в state
