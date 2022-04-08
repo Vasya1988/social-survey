@@ -29,8 +29,8 @@ const questionSeven = () => {
         <div class='nav-button'>
             <span>67%</span>
             <div class="buttons">
-                <a href='#/q6' type="button" class='button' >Назад</a>
-                <a href='#/q8' type="button" class='button' >Вперед</a>
+                <a href='#/q6' data-buttons='back' type="button" class='button' >Назад</a>
+                <a href='#/q8' data-buttons='forward' type="button" class='button' >Вперед</a>
             </div>
         </div>
 
@@ -54,10 +54,13 @@ const questionSeven = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionSeven);
 
         checkChildren();
-        getShoesSize('length', 'shoesLength')
+        getShoesSize('length', 'shoesLength');
+        checkAnswer('forward');
         // getInput('[data-shoes="length"]');
+        
     }
-
+    
+    // Проверка детей
     const checkChildren = () => {
         if (main.state.person.personCard.children.answer[0] != 'Нет детей') {
             addChildCard();
@@ -117,14 +120,20 @@ const questionSeven = () => {
 
         // Добавляем прослушку каждого input
         inputPath.forEach((e, index) => {
-            e.addEventListener('input', (item) => {
+            e.addEventListener('change', (item) => {
                 if (personState.children.answer[0] === 'Нет детей') {
                     console.log('Нет детей');
-                    personState.personAnswers[noChildren] = {
-                        question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
-                        answer: item.target.value
-                    };
+                    if(personState.personAnswers.length === 2) {
+                        personState.personAnswers.pop()
+                    }
+                    personState.personAnswers.push(
+                        {
+                            question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
+                            answer: item.target.value
+                        }
+                    )
                     console.log(inputPath.length);
+                    console.log(personState.personAnswers);
                 } else {
                     console.log('Есть дети');
                     personState.personAnswers[index].card[noChildren] = {
@@ -137,6 +146,17 @@ const questionSeven = () => {
         
     }
 
+    const checkAnswer = (btn) => {
+        const forward = document.querySelector(`[data-buttons="${btn}"]`);
+
+        forward.addEventListener('click', (e) => {
+            if(personState.personAnswers <= 1) {
+                console.log(personState.personAnswers.length)
+                e.preventDefault();
+                alert("Введите ответ")
+            }
+        })
+    }
 
 
     return renderPage();

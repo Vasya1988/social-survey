@@ -166,14 +166,21 @@ export const checkClass = (name) => {
 // Проверка ответов на пустые поля
 export const checkAnswer = (name, btn) => {
     const pathAnswer = state.person.personCard[name].answer;
-    if (pathAnswer.length === 0) {
-        alert('Пожалуйста, введите ответ');
-        btn.preventDefault()
-        return false
+    if (!pathAnswer) {
+        alert('here')
     } else {
-        noChildren(pathAnswer)
+        if (pathAnswer.length === 0) {
+            alert('Пожалуйста, введите ответ');
+            btn.preventDefault()
+            return false
+        } else {
+            noChildren(pathAnswer)
+        }
     }
 }
+
+
+
 
 // Если указали - "Нет детей"
 const noChildren = (pathName) => {

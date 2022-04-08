@@ -48,7 +48,8 @@ const questionFour = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionFour);
         checkChildren();
-        getShoesSize('size', 'shoesSize')
+        getShoesSize('size', 'shoesSize');
+        checkAnswer('[data-shoes="size"]')
     }
 
     // Перейти мимо страницы с указанием детей
@@ -61,6 +62,7 @@ const questionFour = () => {
                 <div class='create-age no-children' >
                 <span>Размер: &nbsp </span>
                 <select data-shoes="size" class='size-list' >
+                    <option value='Размер' >Размер</option>
                     <option value='20' >20</option>
                     <option value='21' >21</option>
                     <option value='22' >22</option>
@@ -113,6 +115,7 @@ const questionFour = () => {
                             <div class='create-age' >
                                 <span>Размер: &nbsp </span>
                                 <select data-shoes="size" class='size-list' >
+                                    <option value='Размер' >Размер</option>
                                     <option value='20' >20</option>
                                     <option value='21' >21</option>
                                     <option value='22' >22</option>
@@ -149,6 +152,13 @@ const questionFour = () => {
         })
     }
 
+    const checkAnswer = (element) => {
+        if (document.querySelector(element).value === 'Размер') {
+            alert('Ddtlbnt jndtn')
+            return false
+        }
+    }
+
     // Записываем ответы в state
     const getShoesSize = (path, noChildren) => {
 
@@ -160,10 +170,13 @@ const questionFour = () => {
             e.addEventListener('input', (item) => {
                 if (personState.children.answer[0] === 'Нет детей') {
                     console.log('Нет детей');
-                    personState.personAnswers[noChildren] = {
-                        question: 'Обувь какого размера вы покупаете ребенку в данный момент?',
-                        answer: item.target.value
-                    };
+                    personState.personAnswers = []
+                    personState.personAnswers.push(
+                        {
+                            question: 'Обувь какого размера вы покупаете ребенку в данный момент?',
+                            answer: item.target.value
+                        }
+                    )
                     console.log(inputPath.length);
                 } else {
                     console.log('Есть дети');
