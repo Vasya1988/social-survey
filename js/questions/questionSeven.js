@@ -6,12 +6,13 @@ import * as main from '../main.js';
 const questionSeven = () => {
 
     main.checkPerson();
+    const pageNumber = 6;
 
     // Разметка страницы
     const markupQuestionSeven = `
 
         <div class='nav-button'>
-            <span>67%</span>
+            <span>${main.progressBar(pageNumber)}%</span>
             <div class="buttons">
                 <a href='#/q6' data-buttons='back' type="button" class='button' >Назад</a>
                 <a href='#/q8' data-buttons='forward' type="button" class='button' >Вперед</a>
@@ -38,6 +39,7 @@ const questionSeven = () => {
         getShoesSize('length', 'shoesLength');
         checkAnswer('[data-shoes="length"]', '[data-buttons="forward"]');
         // getInput('[data-shoes="length"]');
+        main.progressBar(pageNumber);
     }
     
     // Проверка детей

@@ -200,7 +200,16 @@ export const createCard = (name) => {
     console.log('The person was created --> ', state.person.personCard)
 }
 
+// Прогресс бар
+export const progressBar = (currentNum) => {
+    const amountQuestion = 9;
+    let percentProgress = 0;
 
+    percentProgress = `${Math.trunc(currentNum * 100 / amountQuestion)}`;
+    console.log('Percent of progrees bar --> ', percentProgress)
+
+    return percentProgress;
+}
 
 // Выбор аватара для разных гендеров
 export const choiceAvatar = (path) => {

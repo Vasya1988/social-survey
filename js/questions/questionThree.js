@@ -3,6 +3,7 @@ import * as main from '../main.js';
 const questionThree = () => {
 
     main.checkPerson();
+    const pageNumber = 3;
 
     const currentCard = {
         currentGender: null,
@@ -13,7 +14,7 @@ const questionThree = () => {
     const markupQuestionThree = `
 
         <div class='nav-button'>
-            <span>67%</span>
+            <span>${main.progressBar(pageNumber)}%</span>
             <div class="buttons">
                 <a href='#/q2' data-buttons="back" type="button" class='button' >Назад</a>
                 <a href='#/q4' data-buttons="forward"  type="button" class='button' >Вперед</a>
@@ -82,6 +83,7 @@ const questionThree = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionThree);
         personState.personAnswers = [];
+        main.progressBar(pageNumber);
     }
 
     // Записываем гендер и возраст

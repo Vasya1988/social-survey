@@ -14,10 +14,11 @@ const questionTwo = () => {
     // }
 
 
+    const pageNumber = 2;
     const markupQuestionTwo = 
     `
     <div class='nav-button'>
-        <span>67%</span>
+        <span>${main.progressBar(pageNumber)}%</span>
         <div class="buttons">
             <a href='#/q1' data-buttons="back" type="button" class='button' >Назад</a>
             <a href='#/q3' data-buttons="forward" type="button" class='button' >Вперед</a>
@@ -50,7 +51,7 @@ const questionTwo = () => {
     
     `;
 
-
+    
     const personCard = main.state.person.personCard;
 
     
@@ -61,6 +62,7 @@ const questionTwo = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionTwo);
         main.checkClass('.label');
         main.clickButtons(main.getAnswer, '.label', 'children');
+        main.progressBar(pageNumber);
     };
 
     // Добавляем карточку ответов, если указали - нет детей

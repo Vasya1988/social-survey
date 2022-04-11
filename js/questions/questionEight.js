@@ -4,11 +4,12 @@ import * as main from '../main.js';
 const questionEight = () => {
 
     main.checkPerson();
+    const pageNumber = 7;
 
     const markupQuestionEight = `
 
         <div class='nav-button'>
-            <span>67%</span>
+            <span>${main.progressBar(pageNumber)}%</span>
             <div class="buttons">
                 <a href='#/q7' data-buttons="back" type="button" class='button' >Назад</a>
                 <a href='#/q9' data-buttons="forward" type="button" class='button' >Вперед</a>
@@ -61,6 +62,7 @@ const questionEight = () => {
             
         })
         main.clickButtons(main.getAnswer, '.label', 'shoesTrouble');
+        main.progressBar(pageNumber);
     }
 
 

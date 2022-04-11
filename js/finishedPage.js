@@ -14,11 +14,13 @@ const finishedPage = () => {
         </div>
     `;
 
+    const pageNumber = 9;
 
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupFinishedPage);
 
         console.log(main.state.person.personCard);
+        main.progressBar(pageNumber);
     }
 
     return renderPage();

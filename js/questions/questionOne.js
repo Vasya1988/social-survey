@@ -1,9 +1,10 @@
 import * as main from '../main.js';
 
 const questionOne = () => {
+    const pageNumber = 1;
     const markupQuestionOne = `
         <div class='nav-button'>
-            <span>67%</span>
+            <span>${main.progressBar(pageNumber)}%</span>
             <div class="buttons">
                 <a href='#/startPage' type="button" class='button' >Назад</a>
                 <a href='#/q2' data-buttons="forward" type="button" class='button' >Вперед</a>
@@ -17,6 +18,7 @@ const questionOne = () => {
 
         `;
 
+    
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionOne);
         getAnswer();

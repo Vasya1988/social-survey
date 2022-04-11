@@ -3,11 +3,12 @@ import * as main from '../main.js';
 const questionFour = () => {
 
     main.checkPerson();
+    const pageNumber = 4;
 
     const markupQuestionFour = `
 
         <div class='nav-button'>
-            <span>67%</span>
+            <span>${main.progressBar(pageNumber)}%</span>
             <div class="buttons">
                 <a href='#/q2' data-button="back" type="button" class='button' >Назад</a>
                 <a href='#/q6' data-buttons='forward' type="button" class='button' >Вперед</a>
@@ -29,7 +30,8 @@ const questionFour = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupQuestionFour);
         checkChildren();
         getShoesSize('size', 'shoesSize');
-        checkAnswer('[data-shoes="size"]', '[data-buttons="forward"]')
+        checkAnswer('[data-shoes="size"]', '[data-buttons="forward"]');
+        main.progressBar(pageNumber);
     }
 
     // Перейти мимо страницы с указанием детей
