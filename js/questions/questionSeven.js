@@ -108,20 +108,35 @@ const questionSeven = () => {
                     if(personState.personAnswers.length === 2) {
                         personState.personAnswers.pop()
                     }
-                    personState.personAnswers.push(
-                        {
-                            question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
-                            answer: item.target.value
-                        }
-                    )
+                    if(!Number(item.target.value)) {
+                        item.preventDefault();
+                        alert ('Введите корректный размер');
+                        console.log(Number(item.target.value))
+                        
+                    } else {
+                        personState.personAnswers.push(
+                            {
+                                question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
+                                answer: item.target.value
+                            }
+                        )
+                    }
                     console.log(inputPath.length);
                     console.log(personState.personAnswers);
                 } else {
                     console.log('Есть дети');
-                    personState.personAnswers[index].card[noChildren] = {
-                        question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
-                        answer: item.target.value
+                    if(!Number(item.target.value)) {
+                        item.preventDefault();
+                        alert ('Введите корректный размер');
+                        console.log(Number(item.target.value))
+                        
+                    } else {
+                        personState.personAnswers[index].card[noChildren] = {
+                            question: 'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм',
+                            answer: item.target.value
+                        }
                     }
+                   
                 }
             })
         })

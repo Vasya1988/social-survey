@@ -44,6 +44,9 @@ const questionOne = () => {
                 alert('Введите имя');
                 check.preventDefault();
                 return false
+            } else if (!main.mailValidate(pathName.value, /^[a-zA-Z]+/) ) {
+                check.preventDefault();
+                alert('Введите корректное имя')
             }
         })
     }

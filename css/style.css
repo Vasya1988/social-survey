@@ -179,6 +179,8 @@ body {
     border-radius: 50%;
     width: 26px;
     height: 26px;
+    background-image: url('../../img/close.svg');
+    background-color: transparent;
     border: none;
     margin-left: 2px;
     cursor: pointer;
@@ -323,7 +325,7 @@ body {
 .child-card-delete {
     width: 26px;
     height: 26px;
-    background-color: coral;
+    background-image: url('../../img/close.svg');
     position: relative;
     right: -26px;
     top: -20px;

@@ -10,6 +10,32 @@ const questionThree = () => {
         currentAge: null
     }
 
+    const closeIcon = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                viewBox="0 0 120 120" style="enable-background:new 0 0 120 120;" xml:space="preserve"
+                                                
+                                                
+                                                >
+
+                                            <style type="text/css">
+                                                .st0{fill:#58595B;}
+                                            </style>
+                                            <path class="st0" d="M68.5,61.6l32.3-32.3c2.3-2.3,2.3-6.1,0-8.5c-2.3-2.3-6.1-2.3-8.5,0L60,53.2L27.7,20.9c-2.3-2.3-6.1-2.3-8.5,0
+                                                c-2.3,2.3-2.3,6.1,0,8.5l32.3,32.3L19.2,93.9c-2.3,2.3-2.3,6.1,0,8.5c1.2,1.2,2.7,1.8,4.2,1.8c1.5,0,3.1-0.6,4.2-1.8L60,70.1
+                                                l32.3,32.3c1.2,1.2,2.7,1.8,4.2,1.8s3.1-0.6,4.2-1.8c2.3-2.3,2.3-6.1,0-8.5L68.5,61.6z"/>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            <g>
+                                            </g>
+                                            </svg>`
+
 
     const markupQuestionThree = `
 
@@ -70,7 +96,7 @@ const questionThree = () => {
                 </div>
                 <button class='button button-add' data-button='add' >Добавить</button>
             </div>
-            <button class='button-close' data-button='close' >X</button>
+            <button class='button-close' data-button='close' ></button>
         </div>
     </div> 
     `;
@@ -100,6 +126,16 @@ const questionThree = () => {
         })
 
 
+    };
+
+    // Валидация ответов
+    const enterGender = (btn) => {
+        const gender = document.querySelector('[data-choicegender="gender"]');
+
+        if (gender.value =! 'Мальчик' || gender.value != 'Девочка') {
+            btn.preventDefault();
+            alert('Выберите пол ребенка')
+        }
     }
 
     const btnForward = () => {
@@ -138,31 +174,39 @@ const questionThree = () => {
                 btn.addEventListener('click', (buttonItem) => {
 
                     if (buttonItem.target.dataset.button === 'add') {
-                        // console.dir(elements.gender);
-                        let genderConverseRus;
-                        if (elements.gender.value === 'male') {
-                            genderConverseRus = 'Мальчик';
-                            // choiceAvatar = './img/child-card/male.png';
-                        } else if (elements.gender.value === 'female') {
-                            genderConverseRus = 'Девочка';
-                            // choiceAvatar = './img/child-card/female.png';
+
+                        if (elements.gender.value != 'gender') {
+                            // console.dir(elements.gender);
+                            let genderConverseRus;
+                            if (elements.gender.value === 'male') {
+                                genderConverseRus = 'Мальчик';
+                                // choiceAvatar = './img/child-card/male.png';
+                            } else if (elements.gender.value === 'female') {
+                                genderConverseRus = 'Девочка';
+                                // choiceAvatar = './img/child-card/female.png';
+                            }
+                            const markupChildCard = `
+                                <div class="child-card create-child">
+                                    <img class='image-child' src=${main.choiceAvatar(genderConverseRus)} />
+                                        <div class='child-info' >
+                                            <span class='title-gender'>Пол: <span data-gender>${genderConverseRus}</span></span>
+                                            <span class='title-age'>Возраст: <span data-age>${elements.age.value}</span></span>
+                                        </div>
+                                        
+                                        <div data-delete="child-card" class='child-card-delete' >
+                                        </div>
+                                </div>
+                            `;
+                            createChildCard(markupChildCard);
+                            closeCreateFrame();
+                            deleteCard();
+                            
+                            console.log(main.state.person.personCard)
+                        } else {
+                            buttonItem.preventDefault();
+                            alert('Выберите пол ребенка');
                         }
-                        const markupChildCard = `
-                            <div class="child-card create-child">
-                                <img class='image-child' src=${main.choiceAvatar(genderConverseRus)} />
-                                    <div class='child-info' >
-                                        <span class='title-gender'>Пол: <span data-gender>${genderConverseRus}</span></span>
-                                        <span class='title-age'>Возраст: <span data-age>${elements.age.value}</span></span>
-                                    </div>
-                                    
-                                    <div data-delete="child-card" class='child-card-delete' ></div>
-                            </div>
-                        `;
-                        createChildCard(markupChildCard);
-                        closeCreateFrame();
-                        deleteCard();
                         
-                        console.log(main.state.person.personCard)
 
                     } else if (buttonItem.target.dataset.button === 'close') {
 

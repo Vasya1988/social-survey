@@ -221,6 +221,12 @@ export const choiceAvatar = (path) => {
     }
 }
 
+// Проверка заполнения почты
+export const mailValidate = (props, check) => {
+     let pattern = check // /^\w+\@\w+\.\w{2,3}/;
+    return pattern.test(props);
+}
+
 // ----------------------- Карточка ответов
 export class CardQuestion {
     constructor(gender, age, shoesSize, shoesLength) {
