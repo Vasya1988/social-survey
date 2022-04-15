@@ -179,7 +179,7 @@ body {
     border-radius: 50%;
     width: 26px;
     height: 26px;
-    background-image: url('../../img/close.svg');
+    background-image: url('.././img/close.svg');
     background-color: transparent;
     border: none;
     margin-left: 2px;
@@ -325,11 +325,10 @@ body {
 .child-card-delete {
     width: 26px;
     height: 26px;
-    background-image: url('../../img/close.svg');
-    position: relative;
-    right: -26px;
-    top: -20px;
-    /* margin-right: 0px; */
+    background-image: url('.././img/close.svg');
+
+    margin-left: 20px;
+    margin-bottom: 24px;
     cursor: pointer;
 }
 .image-child {
