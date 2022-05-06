@@ -34,10 +34,19 @@ const finishedPage = () => {
 
             'Укажите, пожалуйста, ваше имя': main.state.person.personCard.personName,
 
-            'extra': main.state.person.personCard.personAnswers
+            'extra': main.state.person.personCard.personAnswers.map((item, index)=>{
+                console.log(item, index)
+                return {
+                    'Пол': item.card.gender,
+                    'Возраст': item.card.age,
+                    'Обувь какого размера вы покупаете ребенку вданный момент?': item.card.shoesSize.answer,
+                    'Укажите, пожалуйста, длину стопы ребенка вформате: возраст ребенка-длина стопы в мм': item.card.shoesLength.answer
+                }
+            })
 
         };
         console.log(answersExport)
+        console.log(main.state.person.personCard.personAnswers)
     }
 
     return renderPage();
