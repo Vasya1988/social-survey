@@ -24,6 +24,31 @@ const finishedPage = () => {
         console.log(main.state.person.personCard);
         main.progressBar(pageNumber);
 
+        const childResult = () => {
+            console.log(main.state.person.personCard.personAnswers)
+            if (main.state.person.personCard.children.answer[0] != 'Нет детей') {
+                return main.state.person.personCard.personAnswers.map((item, index)=>{
+                    console.log(item, index)
+                    return {
+                        'Пол': item.card.gender,
+                        'Возраст': item.card.age,
+                        'Обувь какого размера вы покупаете ребенку вданный момент?': item.card.shoesSize.answer,
+                        'Укажите, пожалуйста, длину стопы ребенка вформате: возраст ребенка-длина стопы в мм': item.card.shoesLength.answer
+                    }
+                })
+            } else {
+                return null
+            }   
+        }
+
+        const sizeAnswer = (num) => {
+            if (main.state.person.personCard.children.answer[0] === 'Нет детей') {
+                return main.state.person.personCard.personAnswers[num].answer
+            } else {
+                return null
+            }
+        }
+
         const answersExport = {
 
             'Где вы предпочитаете покупать детскую обувь?': main.state.person.personCard.whichBrand.answer,
@@ -34,19 +59,15 @@ const finishedPage = () => {
 
             'Укажите, пожалуйста, ваше имя': main.state.person.personCard.personName,
 
-            'extra': main.state.person.personCard.personAnswers.map((item, index)=>{
-                console.log(item, index)
-                return {
-                    'Пол': item.card.gender,
-                    'Возраст': item.card.age,
-                    'Обувь какого размера вы покупаете ребенку вданный момент?': item.card.shoesSize.answer,
-                    'Укажите, пожалуйста, длину стопы ребенка вформате: возраст ребенка-длина стопы в мм': item.card.shoesLength.answer
-                }
-            })
+            'Обувь какого размера вы покупаете ребенку в данный момент?': sizeAnswer(0),
+
+            'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм': sizeAnswer(1),
+
+            'extra': childResult()
 
         };
         console.log(answersExport)
-        console.log(main.state.person.personCard.personAnswers)
+        // console.log(main.state.person.personCard.personAnswers)
     }
 
     return renderPage();
