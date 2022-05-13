@@ -21,14 +21,14 @@ const finishedPage = () => {
     const renderPage = () => {
         document.getElementById('app').insertAdjacentHTML('afterbegin', markupFinishedPage);
 
-        console.log(main.state.person.personCard);
+        // console.log(main.state.person.personCard);
         main.progressBar(pageNumber);
 
         const childResult = () => {
-            console.log(main.state.person.personCard.personAnswers)
+            // console.log(main.state.person.personCard.personAnswers)
             if (main.state.person.personCard.children.answer[0] != 'Нет детей') {
                 return main.state.person.personCard.personAnswers.map((item, index)=>{
-                    console.log(item, index)
+                    // console.log(item, index)
                     return {
                         'Пол': item.card.gender,
                         'Возраст': item.card.age,
@@ -66,8 +66,58 @@ const finishedPage = () => {
             'extra': childResult()
 
         };
+
+        const checkAnswerNull = () => {
+            if (answersExport['Обувь какого размера вы покупаете ребенку в данный момент?'] === null) {
+                delete(answersExport['Обувь какого размера вы покупаете ребенку в данный момент?']);
+                delete(answersExport['Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм'])
+
+                // console.log('new --> ', answersExport)
+
+                return answersExport;
+            }
+        }
+
+        checkAnswerNull()
+
         console.log(answersExport)
         // console.log(main.state.person.personCard.personAnswers)
+
+
+        const send_ajax = (url,json_data) => {
+            fetch(url, {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {
+                "X-Requested-With": "XMLHttpRequest",
+                "X-CSRFToken": getCookie("csrftoken"),
+                },
+                body: JSON.stringify(json_data)
+                }
+            )
+            .then(response => response.json())
+            .then(data => {
+            console.log(data);
+            })
+        }
+
+            
+        const getCookie = (name) => {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== "") {
+                const cookies = document.cookie.split(";");
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }   
+                }
+            }
+            return cookieValue;
+        }
+
+        send_ajax('http://192.168.19.146/vote/opros/#/finished', answersExport)
     }
 
     return renderPage();
