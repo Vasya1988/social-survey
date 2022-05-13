@@ -117,7 +117,7 @@ const finishedPage = () => {
             return cookieValue;
         }
 
-        send_ajax('http://192.168.19.146/vote/opros/#/finished', answersExport)
+        send_ajax('http://192.168.19.146/vote/opros/', answersExport)
     }
 
     return renderPage();
