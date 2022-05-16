@@ -84,8 +84,11 @@ const finishedPage = () => {
         // console.log(main.state.person.personCard.personAnswers)
 
 
-        const send_ajax = (url,json_data) => {
-            fetch(url, {
+        const send_ajax = (json_data) => {
+
+            const urlPage = location.href.split('#')[0];
+
+            fetch(urlPage, {
                 method: "POST",
                 credentials: "same-origin",
                 headers: {
@@ -117,7 +120,7 @@ const finishedPage = () => {
             return cookieValue;
         }
 
-        send_ajax('http://192.168.19.146/vote/opros/', answersExport)
+        send_ajax(answersExport)
     }
 
     return renderPage();
