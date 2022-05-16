@@ -55,7 +55,7 @@ const finishedPage = () => {
 
             'Сталкиваетесь ли вы при выборе детской обуви со следующими проблемами?': main.state.person.personCard.shoesTrouble.answer,
 
-            'Есть ли у Вас дети?': main.state.person.personCard.children.answer,
+            'Есть ли у Вас дети?': main.state.person.personCard.children.answer[0],
 
             'Укажите, пожалуйста, ваше имя': main.state.person.personCard.personName,
 
