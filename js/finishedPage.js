@@ -28,7 +28,7 @@ const finishedPage = () => {
             // console.log(main.state.person.personCard.personAnswers)
             if (main.state.person.personCard.children.answer[0] != 'Нет детей') {
                 return main.state.person.personCard.personAnswers.map((item, index)=>{
-                    // console.log(item, index)
+                    console.log({...main.state.person.personCard.personAnswers})
                     return {
                         'Пол': item.card.gender,
                         'Возраст': item.card.age,
@@ -63,7 +63,7 @@ const finishedPage = () => {
 
             'Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм': sizeAnswer(1),
 
-            'extra': childResult()
+            'extra': Object.assign({}, childResult()) // Преобразуем массив в объект
 
         };
 
@@ -72,7 +72,7 @@ const finishedPage = () => {
                 delete(answersExport['Обувь какого размера вы покупаете ребенку в данный момент?']);
                 delete(answersExport['Укажите, пожалуйста, длину стопы ребенка в формате: возраст ребенка-длина стопы в мм'])
 
-                // console.log('new --> ', answersExport)
+                console.log('new --> ', answersExport)
 
                 return answersExport;
             }
@@ -83,6 +83,11 @@ const finishedPage = () => {
         console.log(answersExport)
         // console.log(main.state.person.personCard.personAnswers)
 
+        const setLocal = () => {
+            let setData = JSON.stringify(answersExport)
+            window.localStorage.setItem('answers', setData);
+        }
+        setLocal()
 
         const send_ajax = (json_data) => {
 
